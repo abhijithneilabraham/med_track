@@ -21,5 +21,14 @@ class LoginPage extends StatefulWidget{
 }
 class _LoginPageState extends State<LoginPage>{
   @override
-  W
+  Widget build(BuildContext context){
+    return Scaffold (
+      appBar: AppBar(
+        title: Text("Login Page for Suppliers"),
+      ),
+      body: Center(
+        child: Text("Enter the details below"),
+      ),
+    );
+  }
 }
