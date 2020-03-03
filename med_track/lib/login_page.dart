@@ -17,7 +17,9 @@ class _LoginPageState extends State<LoginPage>{
       ),
       body: Container(
         padding: EdgeInsets.all(20.0),
-        child: Column(
+    child: Form(          // <= NEW
+    key: _formKey,
+    child: Column(
           children: <Widget>[
             SizedBox(height: 20.0),
             Text(
@@ -26,20 +28,30 @@ class _LoginPageState extends State<LoginPage>{
             ),
             SizedBox(height: 20.0),
             TextFormField(
+                onSaved: (value) => _email = value,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(labelText: "Email Address")),
             SizedBox(height: 20.0),
             TextFormField(
+                onSaved: (value) => _password = value,
                 obscureText: true,
                 decoration: InputDecoration(labelText: "Password")),
             SizedBox(height: 20.0),
-            RaisedButton(child: Text("LOGIN"), onPressed: () {}),
+            RaisedButton(child: Text("LOGIN"), onPressed: () {
+              final form = _formKey.currentState;
+              form.save();
+
+              // Validate will return true if is valid, or false if invalid.
+              if (form.validate()) {
+                print("$_email $_password");
+              }
+            }),
 
           ],
         ),
       ),
 
-    );
+    ));
 
   }
 }
