@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:med_track/login_page.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -7,28 +7,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Supplier App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green ,
       ),
       home: LoginPage(),
-    );
-  }
-}
-class LoginPage extends StatefulWidget{
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-class _LoginPageState extends State<LoginPage>{
-  @override
-  Widget build(BuildContext context){
-    return Scaffold (
-      appBar: AppBar(
-        title: Text("Login Page for Suppliers"),
-      ),
-      body: Center(
-        child: Text("Enter the details below"),
-      ),
     );
   }
 }
