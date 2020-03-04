@@ -108,6 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 20,
                   ),
                   TextFormField(
+                    obscureText: true,
                     decoration: InputDecoration(
                         labelText: "Password", hasFloatingPlaceholder: true),
                   ),
@@ -212,6 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 20,
                   ),
                   TextFormField(
+                    obscureText: true,
                     decoration: InputDecoration(
                         labelText: "Password", hasFloatingPlaceholder: true),
                   ),
