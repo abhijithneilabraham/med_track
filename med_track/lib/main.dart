@@ -28,7 +28,8 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             lowerHalf(context),
             upperHalf(context),
-            loginCard(context)
+            loginCard(context),
+            pageTitle()
           ],
         ),
       ),
@@ -146,6 +147,26 @@ class _LoginPageState extends State<LoginPage> {
       ],
     );
   }
-
+  Widget pageTitle() {
+    return Container(
+      margin: EdgeInsets.only(top: 50),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.add_location,
+            size: 48,
+            color: Colors.red,
+          ),
+          Text(
+            "Supplier Login",
+            style: TextStyle(
+                fontSize: 34, color: Colors.white, fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
+    );
+  }
 
 }
