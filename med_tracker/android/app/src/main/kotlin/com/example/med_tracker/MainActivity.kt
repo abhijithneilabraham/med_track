@@ -1,4 +1,4 @@
-package abhijithneilabraham.med_track
+package com.example.med_tracker
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

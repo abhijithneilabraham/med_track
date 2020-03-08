@@ -1,6 +1,6 @@
-# med_track
+# med_tracker
 
-medicine tracker platform
+A new Flutter project.
 
 ## Getting Started
 
