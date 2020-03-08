@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'dart:async';
+
 
 void main() => runApp(MyApp());
 
@@ -307,4 +310,10 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
 }
+class _MyHomePageState extends State<LoginPage> {
+  static const platform = const MethodChannel('flutter.native/helper');
+}
+
+
