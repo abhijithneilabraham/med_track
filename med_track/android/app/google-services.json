@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "674468261179",
+    "firebase_url": "https://myapplication2-f5537.firebaseio.com",
+    "project_id": "myapplication2-f5537",
+    "storage_bucket": "myapplication2-f5537.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674468261179:android:b4ab91e620e7da8d81db1e",
+        "android_client_info": {
+          "package_name": "abhijithneilabraham.med_track"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674468261179-l06eorp998vcei5rc1oqeee7tc5fq8n9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkcfN2VKcfJbreSOwTGaX7CqS6MjZ0t8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674468261179-l06eorp998vcei5rc1oqeee7tc5fq8n9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
