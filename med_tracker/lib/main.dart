@@ -83,11 +83,6 @@ class _LoginPageState extends State<LoginPage> {
 
 final passwordcontroller=TextEditingController();
   @override
-  void dispose2() {
-    // Clean up the controller when the widget is disposed.
-    passwordcontroller.dispose();
-    super.dispose();
-  }
 
   Widget loginCard(BuildContext context) {
     return Column(
@@ -187,6 +182,7 @@ final passwordcontroller=TextEditingController();
         )
       ],
     );
+
   }
 
   Widget singUpCard(BuildContext context) {
@@ -344,7 +340,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> responseFromNativeCode() async {
     String response = "";
     try {
-      final String result = await platform.invokeMethod('helloFromNativeCode',"email",email);
+      final String result = await platform.invokeMethod('helloFromNativeCode',);
       response = result;
     } on PlatformException catch (e) {
       response = "Failed to Invoke: '${e.message}'.";
