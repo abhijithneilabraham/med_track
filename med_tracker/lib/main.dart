@@ -312,7 +312,48 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 }
-class _MyHomePageState extends State<LoginPage> {
+class ButtonClickEvent extends StatefulWidget {
+  @override
+  ButtonClickEventState createState() {
+    return new ButtonClickEventState();
+  }
+}
+class ButtonClickEventState extends State<ButtonClickEvent> {
+  int countValue = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Button Cick Event Example'),
+        ),
+        body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Expanded(
+                    child: Center(
+                        child: Text(countValue.toString(),
+                            style: TextStyle(fontSize: 25.0)))),
+                RaisedButton(
+                  child: Text('Click Button '),
+                  onPressed: () {
+                    //Insert event to be fired up when button is clicked here
+                    //in this case, this increments our `countValue` variable by one.
+                    setState(() => countValue += 1);
+                  },
+                ),
+              ],
+            )));
+  }
+}
+class _MyHomePageJava extends StatefulWidget {
+  MyHomePageJavaState createState()={
+  return new _MyHomePageJavaState();
+  }
+
+}
+class _MyHomePageJavaState extends State<_MyHomePageJava>{
   static const platform = const MethodChannel('flutter.native/helper');
 }
 
