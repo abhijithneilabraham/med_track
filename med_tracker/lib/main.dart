@@ -72,6 +72,22 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+  final emailcontroller=TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailcontroller.dispose();
+    super.dispose();
+  }
+
+final passwordcontroller=TextEditingController();
+  @override
+  void dispose2() {
+    // Clean up the controller when the widget is disposed.
+    passwordcontroller.dispose();
+    super.dispose();
+  }
 
   Widget loginCard(BuildContext context) {
     return Column(
@@ -104,6 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 15,
                   ),
                   TextFormField(
+                    controller: emailcontroller,
                     decoration: InputDecoration(
                         labelText: "Your Email", hasFloatingPlaceholder: true),
                   ),
@@ -111,6 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 20,
                   ),
                   TextFormField(
+                    controller: passwordcontroller,
                     obscureText: true,
                     decoration: InputDecoration(
                         labelText: "Password", hasFloatingPlaceholder: true),
@@ -312,41 +330,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 }
-class ButtonClickEvent extends StatefulWidget {
-  @override
-  ButtonClickEventState createState() {
-    return new ButtonClickEventState();
-  }
-}
-class ButtonClickEventState extends State<ButtonClickEvent> {
-  int countValue = 1;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Button Cick Event Example'),
-        ),
-        body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Expanded(
-                    child: Center(
-                        child: Text(countValue.toString(),
-                            style: TextStyle(fontSize: 25.0)))),
-                RaisedButton(
-                  child: Text('Click Button '),
-                  onPressed: () {
-                    //Insert event to be fired up when button is clicked here
-                    //in this case, this increments our `countValue` variable by one.
-                    setState(() => countValue += 1);
-                  },
-                ),
-              ],
-            )));
-  }
-}
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
@@ -354,12 +338,13 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => new _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
+
   static const platform = const MethodChannel('flutter.native/helper');
   String _responseFromNativeCode = 'Waiting for Response...';
   Future<void> responseFromNativeCode() async {
     String response = "";
     try {
-      final String result = await platform.invokeMethod('helloFromNativeCode');
+      final String result = await platform.invokeMethod('helloFromNativeCode',"email",email);
       response = result;
     } on PlatformException catch (e) {
       response = "Failed to Invoke: '${e.message}'.";
