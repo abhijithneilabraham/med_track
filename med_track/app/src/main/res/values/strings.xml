@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">med_track_java</string>
     <string name="title_activity_login">ActivityLogin</string>
+    <string name="title_activity_user">UserActivity</string>
 </resources>
