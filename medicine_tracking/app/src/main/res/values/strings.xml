@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">medicine_tracking</string>
+    <string name="title_activity_login">ActivityLogin</string>
+    <string name="title_activity_user">UserActivity</string>
+</resources>

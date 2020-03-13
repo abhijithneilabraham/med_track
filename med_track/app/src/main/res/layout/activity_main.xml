@@ -38,7 +38,7 @@
         android:text="Sign Up" />
 
     <TextView
-        android:id="@+id/TVSignIn"
+        android:id="@+id/SignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

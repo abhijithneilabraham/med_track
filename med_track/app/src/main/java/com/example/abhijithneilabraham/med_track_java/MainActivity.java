@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         emailId = findViewById(R.id.ETemail);
         passwd = findViewById(R.id.ETpassword);
         btnSignUp = findViewById(R.id.btnSignUp);
-        signIn = findViewById(R.id.TVSignIn);
+        signIn = findViewById(R.id.SignIn);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
