@@ -23,10 +23,10 @@ public class UserActivity extends AppCompatActivity {
     String age;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    private void writeNewUser() {
+    public void writeNewUser() {
 
 
-        database.getReference(uid).child("age").setValue(100);
+        database.getReference(uid).setValue("Hello");
 
 
     }
@@ -35,12 +35,13 @@ public class UserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        writeNewUser();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
        // Intent i2=getIntent();
      //   String username=i2.getExtras().getString("emailid");
 
-    writeNewUser();
+
 
 
 
