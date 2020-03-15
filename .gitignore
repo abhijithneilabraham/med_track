@@ -9,3 +9,4 @@
 /build
 /captures
 .externalNativeBuild
+/med_track/app/google_services.json
