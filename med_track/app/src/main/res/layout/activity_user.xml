@@ -16,7 +16,8 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="Welcome!"
-        android:textSize="40dp" />
+        android:textSize="40dp"
+        android:id="@+id/usr"/>
 
     <Button
         android:id="@+id/btnLogOut"
