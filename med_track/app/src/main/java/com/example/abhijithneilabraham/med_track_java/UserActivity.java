@@ -6,7 +6,10 @@ import android.view.View;
 
 import android.content.Intent;
 
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +33,8 @@ public class UserActivity extends AppCompatActivity {
 
 
     }
+Spinner spinner1;
+    EditText details;
 
 
 
@@ -38,6 +43,7 @@ public class UserActivity extends AppCompatActivity {
         writeNewUser();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+       
        // Intent i2=getIntent();
      //   String username=i2.getExtras().getString("emailid");
 

@@ -2,4 +2,12 @@
     <string name="app_name">med_track_java</string>
     <string name="title_activity_login">ActivityLogin</string>
     <string name="title_activity_user">UserActivity</string>
+    <string name="details">Click to Select </string>
+
+    <string-array name="detail_array">
+        <item>Name</item>
+        <item>Address</item>
+        <item>Hospital</item>
+        <item>Gender</item>
+    </string-array>
 </resources>
