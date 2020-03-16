@@ -39,7 +39,6 @@
         android:layout_height="94dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="292dp"
-        android:entries="@array/detail_array"
         android:prompt="@string/details"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
