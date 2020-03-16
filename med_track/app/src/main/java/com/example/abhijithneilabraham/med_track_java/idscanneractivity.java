@@ -31,6 +31,7 @@ public class idscanneractivity extends AppCompatActivity {
 
     //qr code scanner object
     private IntentIntegrator qrScan;
+    public  String idnum="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,21 +64,10 @@ public class idscanneractivity extends AppCompatActivity {
             if (result.getContents() == null) {
                 Toast.makeText(this, "Result Not Found", Toast.LENGTH_LONG).show();
             } else {
-                //if qr contains data
-                try {
-                    //converting the data to json
-                    JSONObject obj = new JSONObject(result.getContents());
-                    //setting values to textviews
-                    textViewName.setText(obj.getString("name"));
-                    textViewAddress.setText(obj.getString("address"));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    //if control comes here
-                    //that means the encoded format not matches
-                    //in this case you can display whatever data is available on the qrcode
-                    //to a toast
-                    Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-                }
+
+            idnum=result.getContents();
+
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
