@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,31 +24,24 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UserActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    Button btnLogOut;
+public class UserActivity extends AppCompatActivity  {
+    Button btnLogOut,submit1;
     FirebaseAuth firebaseAuth;
+
     private FirebaseAuth.AuthStateListener authStateListener;
     String age;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     Spinner spinner1;
     EditText details;
-
+   public String headval,dataval;
     public void writeNewUser(String head,String data) {
         database.getReference(uid).child(head).setValue(data);
     }
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
-    }
 
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        writeNewUser();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         spinner1=(Spinner)findViewById(R.id.spinner1);
@@ -66,6 +60,28 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
         // attaching data adapter to spinner
         spinner1.setAdapter(dataAdapter);
 
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                headval=String.valueOf(spinner1.getSelectedItem());
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        submit1=(Button)findViewById(R.id.submit);
+        submit1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                dataval=details.getText().toString();
+                writeNewUser(headval,dataval);
+            }
+        });
 
 
         //   String username=i2.getExtras().getString("emailid");
@@ -84,4 +100,10 @@ public class UserActivity extends AppCompatActivity implements AdapterView.OnIte
         });
 
     }
+
+
+
+
 }
+
+
