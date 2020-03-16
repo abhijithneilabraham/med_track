@@ -7,6 +7,7 @@ import android.view.View;
 import android.content.Intent;
 
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -26,6 +27,10 @@ public class UserActivity extends AppCompatActivity {
     String age;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+Spinner spinner1;
+    EditText details;
+
     public void writeNewUser() {
 
 
@@ -33,18 +38,30 @@ public class UserActivity extends AppCompatActivity {
 
 
     }
-Spinner spinner1;
-    EditText details;
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+    }
 
-
-
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         writeNewUser();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-       
-       // Intent i2=getIntent();
+        spinner1=(Spinner)findViewById(R.id.spinner1);
+        details=(EditText)findViewById(R.id.usr);
+        //String data = spinner1.getSelectedItem().toString();  // Intent i2=getIntent();
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.detail_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(adapter);
+
+
+
      //   String username=i2.getExtras().getString("emailid");
 
 

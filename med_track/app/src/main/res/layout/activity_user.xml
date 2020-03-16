@@ -25,23 +25,32 @@
         android:id="@+id/usr"
         android:layout_width="216dp"
         android:layout_height="wrap_content"
-
-
         android:layout_marginStart="188dp"
         android:layout_marginTop="280dp"
-        android:text="Welcome!"
+        android:text="Enter Details"
         android:textSize="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <Spinner
         android:id="@+id/spinner1"
-        android:layout_width="149dp"
-        android:layout_height="128dp"
+        android:layout_width="153dp"
+        android:layout_height="94dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="292dp"
         android:entries="@array/detail_array"
         android:prompt="@string/details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="436dp"
+        android:text="submit"
+        android:id="@+id/submit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
