@@ -21,47 +21,46 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <EditText
         android:id="@+id/usr"
         android:layout_width="216dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="148dp"
         android:text="Enter Details"
         android:textSize="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinner1"
         android:layout_width="153dp"
         android:layout_height="94dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="292dp"
-        android:outlineAmbientShadowColor="@color/cardview_dark_background"
+        android:layout_marginTop="160dp"
+        android:background="@color/design_default_color_secondary_variant"
         android:prompt="@string/details"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/design_default_color_secondary_variant"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <DatePicker
-        android:id="@+id/dpResult"
-        android:layout_width="356dp"
-        android:layout_height="186dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="48dp"
-        android:datePickerMode="spinner"
+
+    <Button
+        android:id="@+id/dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="316dp"
+        android:text="enter dob"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="436dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="472dp"
         android:text="submit"
-        android:id="@+id/submit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
