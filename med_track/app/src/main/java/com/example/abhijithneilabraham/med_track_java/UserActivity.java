@@ -35,8 +35,8 @@ public class UserActivity extends AppCompatActivity  {
     Spinner spinner1;
     EditText details;
    public String headval,dataval;
-    public void writeNewUser(String head,String data) {
-        database.getReference(uid).child(head).setValue(data);
+    public void writeNewUser(String pid,String head,String data) {
+        database.getReference(uid).child(pid).child(head).setValue(data);
     }
 
     @Override
@@ -52,6 +52,8 @@ public class UserActivity extends AppCompatActivity  {
         categories.add("Address");
         categories.add("Hospital");
         categories.add("Date of Birth");
+        Intent inu=getIntent();
+        String idnum=inu.getExtras().getString("idnumber");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
@@ -80,7 +82,7 @@ public class UserActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 dataval=details.getText().toString();
-                writeNewUser(headval,dataval);
+                writeNewUser(idnum,headval,dataval);
             }
         });
 

@@ -40,8 +40,6 @@ public class idscanneractivity extends AppCompatActivity {
 
         //View objects
         buttonScan = (Button) findViewById(R.id.qr);
-        textViewName = (TextView) findViewById(R.id.textViewName);
-        textViewAddress = (TextView) findViewById(R.id.textViewAddress);
 
         //intializing scan object
         qrScan = new IntentIntegrator(this);
@@ -66,6 +64,10 @@ public class idscanneractivity extends AppCompatActivity {
             } else {
 
             idnum=result.getContents();
+            Intent in=new Intent(idscanneractivity.this,UserActivity.class);
+                in.putExtra("idnumber",idnum);
+                startActivity(in);
+
 
 
             }
