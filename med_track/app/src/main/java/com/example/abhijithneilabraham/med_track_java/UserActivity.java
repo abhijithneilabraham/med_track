@@ -108,6 +108,7 @@ public class UserActivity extends AppCompatActivity  {
         submit1=(Button)findViewById(R.id.submit);
         //dpResult = (DatePicker) findViewById(R.id.dpResult);
         dobclick=(Button)findViewById(R.id.dob);
+        //change the values here to update the changes to database
 
         dobclick.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -156,19 +157,24 @@ public class UserActivity extends AppCompatActivity  {
 
 //make change in this array only for any updations in the database
 
+        String[] headers= {nameh,addh,hosph,genderh,dobh};
 
 
 
         submit1.setOnClickListener(new View.OnClickListener() {
-            String[] details=new String[] {namedet,adddet,hospdet,genderdet,dobdet};
-            String[] headers=new String[] {nameh,addh,hosph,genderh,dobh};
+
+
 
             @Override
             public void onClick(View v) {
-                for(int i=0;i<details.length;i++){
-                    writeNewUser(idnum,headers[i],details[i]);
+                namedet=name.getText().toString();
+                hospdet=hosp.getText().toString();
+                adddet=address.getText().toString();
+                String[] details= {namedet,adddet,hospdet,genderdet,dobdet};
+                    for(int i=0;i<details.length;i++) {
+                        writeNewUser(idnum, headers[i], details[i]);
 
-                }
+                    }
             }
         });
 
