@@ -21,36 +21,108 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="76dp"
+        android:text="Name"
+        android:id="@+id/namehead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="276dp"
+        android:text="Address"
+        android:id="@+id/addresshead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="376dp"
+        android:text="Hospital Details"
+        android:id="@+id/hosphead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="164dp"
+        android:text="Gender"
+        android:id="@+id/genderhead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="484dp"
+        android:text="Date Of Birth"
+        android:id="@+id/dobhead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/usr"
-        android:layout_width="216dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="148dp"
+        android:id="@+id/hosp"
+        android:layout_width="195dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="340dp"
         android:text="Enter Details"
         android:textSize="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="153dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="160dp"
-        android:background="@color/design_default_color_secondary_variant"
-        android:prompt="@string/details"
+    <EditText
+
+        android:layout_width="195dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="240dp"
+        android:text="Enter Details"
+        android:textSize="40dp"
+        android:id="@+id/address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+
+        android:layout_width="195dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="44dp"
+        android:text="Enter Details"
+        android:textSize="40dp"
+        android:id="@+id/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="139dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="144dp"
+        android:prompt="@string/details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/dob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="316dp"
-        android:text="enter dob"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="468dp"
+        android:text="choose date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,8 +130,8 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="472dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="592dp"
         android:text="submit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

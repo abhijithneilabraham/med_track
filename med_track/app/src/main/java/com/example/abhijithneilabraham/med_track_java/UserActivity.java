@@ -43,8 +43,11 @@ public class UserActivity extends AppCompatActivity  {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     Spinner spinner1;
-    EditText details;
-    public String headval,dataval,dob;
+    EditText name,address,hosp;
+    TextView namehead,addresshead,genderhead,hosphead,dobhead;
+    public String genderdet,dobdet;
+    public String namedet,adddet,hospdet;
+    public String nameh,addh,hosph,genderh,dobh;
     Calendar calendar=Calendar.getInstance();
     int y=calendar.get(Calendar.YEAR)-18;
     int m=calendar.get(Calendar.MONTH);
@@ -81,7 +84,27 @@ public class UserActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         spinner1=(Spinner)findViewById(R.id.spinner1);
-        details=(EditText)findViewById(R.id.usr);
+        //edittext values
+        name=(EditText)findViewById(R.id.name);
+        hosp=(EditText)findViewById(R.id.hosp);
+        address=(EditText)findViewById(R.id.address);
+        //textviews
+        namehead=(TextView)findViewById(R.id.namehead);
+        addresshead=(TextView)findViewById(R.id.addresshead);
+        hosphead=(TextView)findViewById(R.id.hosphead);
+        genderhead=(TextView)findViewById(R.id.genderhead);
+        dobhead=(TextView)findViewById(R.id.dobhead);
+        //Textview String conversions
+        nameh=namehead.getText().toString();
+        addh=addresshead.getText().toString();
+        genderh=genderhead.getText().toString();
+        hosph=hosphead.getText().toString();
+        dobh=dobhead.getText().toString();
+        //EditText string conversions
+        namedet=name.getText().toString();
+        hospdet=hosp.getText().toString();
+        adddet=address.getText().toString();
+        //buttons
         submit1=(Button)findViewById(R.id.submit);
         //dpResult = (DatePicker) findViewById(R.id.dpResult);
         dobclick=(Button)findViewById(R.id.dob);
@@ -93,7 +116,7 @@ public class UserActivity extends AppCompatActivity  {
                 DatePickerDialog datePickerDialog=new DatePickerDialog(UserActivity.this, new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                             dob=dayOfMonth+"/"+month+"/"+year;
+                             dobdet=dayOfMonth+"/"+month+"/"+year;
                         }
                     },y,m,d);
                 datePickerDialog.show();
@@ -103,11 +126,12 @@ public class UserActivity extends AppCompatActivity  {
 
 
         List<String> categories = new ArrayList<String>();
-        categories.add("Name");
-        categories.add("Address");
-        categories.add("Hospital");
+        categories.add("Male");
+        categories.add("Female");
+        categories.add("Other");
         Intent inu=getIntent();
         String idnum=inu.getExtras().getString("idnumber");
+
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
@@ -120,7 +144,7 @@ public class UserActivity extends AppCompatActivity  {
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                headval=String.valueOf(spinner1.getSelectedItem());
+                genderdet=String.valueOf(spinner1.getSelectedItem());
 
             }
 
@@ -130,16 +154,21 @@ public class UserActivity extends AppCompatActivity  {
             }
         });
 
+//make change in this array only for any updations in the database
+
 
 
 
         submit1.setOnClickListener(new View.OnClickListener() {
+            String[] details=new String[] {namedet,adddet,hospdet,genderdet,dobdet};
+            String[] headers=new String[] {nameh,addh,hosph,genderh,dobh};
 
             @Override
             public void onClick(View v) {
-                dataval=details.getText().toString();
-                writeNewUser(idnum,headval,dataval);
-                writeNewUser(idnum,"Date Of Birth",dob);
+                for(int i=0;i<details.length;i++){
+                    writeNewUser(idnum,headers[i],details[i]);
+
+                }
             }
         });
 
