@@ -45,6 +45,16 @@
         android:background="@color/design_default_color_secondary_variant"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <DatePicker
+        android:id="@+id/dpResult"
+        android:layout_width="356dp"
+        android:layout_height="186dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="48dp"
+        android:datePickerMode="spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
