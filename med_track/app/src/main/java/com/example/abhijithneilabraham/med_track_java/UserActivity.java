@@ -176,17 +176,11 @@ public class UserActivity extends AppCompatActivity  {
                         writeNewUser(idnum, headers[i], details[i]);
 
                     }
-                    //Intent i2=new Intent(UserActivity.this,supplyactivity.class);
-                    //startActivity(i2);
+                    Intent i2=new Intent(UserActivity.this,supplyactivity.class);
+                    startActivity(i2);
             }
         });
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i2=new Intent(UserActivity.this,supplyactivity.class);
-                startActivity(i2);
-            }
-        });
+
 
 
 
