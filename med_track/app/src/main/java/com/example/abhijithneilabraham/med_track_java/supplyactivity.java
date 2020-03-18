@@ -22,9 +22,9 @@ public class supplyactivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_supplyactivity);
 
-        dl = (DrawerLayout)findViewById(R.id.activity_main);
+        dl = (DrawerLayout)findViewById(R.id.activity_supply);
         t = new ActionBarDrawerToggle(this, dl,R.string.common_google_play_services_enable_button, R.string.common_google_play_services_update_button);
 
         dl.addDrawerListener(t);
