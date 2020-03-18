@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 
 
 public class idscanneractivity extends AppCompatActivity {
-    private Button buttonScan;
+    private Button buttonScan,btnlogout2;
     private TextView textViewName, textViewAddress;
 
     //qr code scanner object
@@ -40,6 +40,7 @@ public class idscanneractivity extends AppCompatActivity {
 
         //View objects
         buttonScan = (Button) findViewById(R.id.qr);
+        btnlogout2=(Button)findViewById(R.id.btnLogOut2);
 
         //intializing scan object
         qrScan = new IntentIntegrator(this);
@@ -51,6 +52,15 @@ public class idscanneractivity extends AppCompatActivity {
                 qrScan.initiateScan();
             }
         });
+        btnlogout2.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              FirebaseAuth.getInstance().signOut();
+                                              Intent I = new Intent(idscanneractivity.this, ActivityLogin.class);
+                                              startActivity(I);
+                                          }
+                                      }
+        );
     }
 
     //Getting the scan results
