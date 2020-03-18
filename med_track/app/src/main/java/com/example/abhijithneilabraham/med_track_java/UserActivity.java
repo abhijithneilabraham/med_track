@@ -175,6 +175,8 @@ public class UserActivity extends AppCompatActivity  {
                         writeNewUser(idnum, headers[i], details[i]);
 
                     }
+                    //Intent i2=new Intent(UserActivity.this,supplyactivity.class);
+                    //startActivity(i2);
             }
         });
 

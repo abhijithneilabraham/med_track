@@ -78,7 +78,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="340dp"
         android:text="Enter Details"
-        android:textSize="40dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,7 +89,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="240dp"
         android:text="Enter Details"
-        android:textSize="40dp"
+        android:textSize="20dp"
         android:id="@+id/address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -101,7 +101,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginTop="44dp"
         android:text="Enter Details"
-        android:textSize="40dp"
+        android:textSize="20dp"
         android:id="@+id/name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
