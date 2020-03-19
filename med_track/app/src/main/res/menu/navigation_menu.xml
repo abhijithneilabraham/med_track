@@ -3,12 +3,16 @@
 
     <item android:id="@+id/account"
         android:icon="@drawable/common_google_signin_btn_icon_dark"
-        android:title="My Account"/>
-    <item android:id="@+id/settings"
+        android:title="Patient Profile"/>
+    <item android:id="@+id/cat1"
         android:icon="@drawable/common_google_signin_btn_icon_light_normal"
-        android:title="Settings"/>
-    <item android:id="@+id/mycart"
+        android:title="Category 1"/>
+    <item android:id="@+id/cat2"
         android:icon="@drawable/common_google_signin_btn_icon_light_normal_background"
-        android:title="My Cart"/>
+        android:title="Category 2"/>
+    <item android:id="@+id/cat3"
+        android:icon="@drawable/common_google_signin_btn_icon_light_normal_background"
+        android:title="Category 3"/>
+
 
 </menu>

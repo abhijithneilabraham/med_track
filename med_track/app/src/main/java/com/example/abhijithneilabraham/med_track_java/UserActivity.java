@@ -35,7 +35,7 @@ import androidx.fragment.app.DialogFragment;
 public class UserActivity extends AppCompatActivity  {
     //initialisations
 
-    Button btnLogOut,submit1,dobclick,next;
+    Button btnLogOut,submit1,dobclick;
     FirebaseAuth firebaseAuth;
     private DatePicker dpResult;
     private FirebaseAuth.AuthStateListener authStateListener;
@@ -108,7 +108,7 @@ public class UserActivity extends AppCompatActivity  {
         submit1=(Button)findViewById(R.id.submit);
         //dpResult = (DatePicker) findViewById(R.id.dpResult);
         dobclick=(Button)findViewById(R.id.dob);
-        next=(Button)findViewById(R.id.next);
+
         //change the values here to update the changes to database
 
         dobclick.setOnClickListener(new View.OnClickListener() {

@@ -41,9 +41,9 @@ public class supplyactivity extends AppCompatActivity {
                 {
                     case R.id.account:
                         Toast.makeText(supplyactivity.this, "My Account",Toast.LENGTH_SHORT).show();break;
-                    case R.id.settings:
+                    case R.id.cat1:
                         Toast.makeText(supplyactivity.this, "Settings",Toast.LENGTH_SHORT).show();break;
-                    case R.id.mycart:
+                    case R.id.cat2:
                         Toast.makeText(supplyactivity.this, "My Cart",Toast.LENGTH_SHORT).show();break;
                     default:
                         return true;
