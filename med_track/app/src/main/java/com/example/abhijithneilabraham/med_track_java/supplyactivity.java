@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
@@ -37,22 +39,37 @@ public class supplyactivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+                Fragment fragment = null;
+
                 switch(id)
                 {
                     case R.id.account:
-                        Toast.makeText(supplyactivity.this, "My Account",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(supplyactivity.this, "My Account",Toast.LENGTH_SHORT).show();
+                        fragment=new BlankFragment1();
+                        break;
+
+
                     case R.id.cat1:
-                        Toast.makeText(supplyactivity.this, "Settings",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(supplyactivity.this, "Settings",Toast.LENGTH_SHORT).show();
+                        fragment=new BlankFragment2();
+                        break;
                     case R.id.cat2:
-                        Toast.makeText(supplyactivity.this, "My Cart",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(supplyactivity.this, "My Cart",Toast.LENGTH_SHORT).show();
+                        fragment=new BlankFragment3();
+                        break;
                     default:
                         return true;
                 }
 
 
-                return true;
 
-            }
+                if (fragment != null) {
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.flContent, fragment);
+                    ft.commit();
+                }
+
+                return true; }
         });
 
 

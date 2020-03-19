@@ -48,6 +48,6 @@
         android:text="Already have an account? Sign in Here"
         android:textSize="20dp" />
 
-
+    
 </RelativeLayout>
 
