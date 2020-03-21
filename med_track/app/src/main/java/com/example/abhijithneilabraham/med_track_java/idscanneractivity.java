@@ -76,6 +76,7 @@ public class idscanneractivity extends AppCompatActivity {
             idnum=result.getContents();
             Intent in=new Intent(idscanneractivity.this,UserActivity.class);
                 in.putExtra("idnumber",idnum);
+
                 startActivity(in);
 
 

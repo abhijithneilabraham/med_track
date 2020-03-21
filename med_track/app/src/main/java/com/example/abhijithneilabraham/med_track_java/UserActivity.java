@@ -42,6 +42,7 @@ public class UserActivity extends AppCompatActivity  {
     String age;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public String idnum;
     Spinner spinner1;
     EditText name,address,hosp;
     TextView namehead,addresshead,genderhead,hosphead,dobhead;
@@ -52,6 +53,7 @@ public class UserActivity extends AppCompatActivity  {
     int y=calendar.get(Calendar.YEAR)-18;
     int m=calendar.get(Calendar.MONTH);
     int d=calendar.get(Calendar.DATE);
+
 
 
     //methods
@@ -83,6 +85,7 @@ public class UserActivity extends AppCompatActivity  {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
         spinner1=(Spinner)findViewById(R.id.spinner1);
         //edittext values
         name=(EditText)findViewById(R.id.name);
@@ -109,6 +112,7 @@ public class UserActivity extends AppCompatActivity  {
         //dpResult = (DatePicker) findViewById(R.id.dpResult);
         dobclick=(Button)findViewById(R.id.dob);
 
+
         //change the values here to update the changes to database
 
         dobclick.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +136,16 @@ public class UserActivity extends AppCompatActivity  {
         categories.add("Female");
         categories.add("Other");
         Intent inu=getIntent();
-        String idnum=inu.getExtras().getString("idnumber");
+        idnum=inu.getExtras().getString("idnumber");
+        Bundle bundle = new Bundle();
+
+        bundle.putString("id", idnum );
+        BlankFragment1 fragInfo = new BlankFragment1();
+        fragInfo.setArguments(bundle);
+
+
+
+
 
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);

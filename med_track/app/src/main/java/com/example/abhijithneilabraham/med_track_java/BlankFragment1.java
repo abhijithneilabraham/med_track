@@ -1,12 +1,23 @@
 package com.example.abhijithneilabraham.med_track_java;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 
 
 /**
@@ -19,10 +30,15 @@ public class BlankFragment1 extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private DatabaseReference mDatabase;
+    View rootview;
+    TextView name1;
+    public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public BlankFragment1() {
         // Required empty public constructor
@@ -40,6 +56,7 @@ public class BlankFragment1 extends Fragment {
     public static BlankFragment1 newInstance(String param1, String param2) {
         BlankFragment1 fragment = new BlankFragment1();
         Bundle args = new Bundle();
+
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
@@ -49,6 +66,8 @@ public class BlankFragment1 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -59,6 +78,14 @@ public class BlankFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank1, container, false);
+        rootview =inflater.inflate(R.layout.fragment_blank1,container,false);
+        //name1=(TextView)rootview.findViewById(R.id.name1);
+
+         //   String idnumber=this.getArguments().getString("id");
+
+       // String idnumber=activity.getidnum();
+        //name1.setText(idnumber);
+
+        return rootview;
     }
 }
