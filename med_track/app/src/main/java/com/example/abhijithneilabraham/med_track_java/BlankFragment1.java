@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,14 +42,18 @@ public class BlankFragment1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String[] valarray=new String[5];
     DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
+    HashMap hm =new HashMap();
 
-    public void readuser(String h,String uid){
-        dbref.child(uid).child(h).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void readuser(String h,String pid){
+        dbref.child(pid).child(h).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String nameval=dataSnapshot.getValue(String.class);
-                
+                String val=dataSnapshot.getValue(String.class);
+                hm.put(h,val);
+
+
             }
 
             @Override
@@ -105,18 +111,9 @@ public class BlankFragment1 extends Fragment {
         String idval=idbun.getString("id1");
 
         String[] heads= {"Name","Address","Date Of Birth","Gender","Hospital Details"};
-        dbref.child(idval).child("Name").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String nameval=dataSnapshot.getValue(String.class);
-                name1.setText(nameval);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        for(int i=0;i<5;i++){
+            readuser(heads[i],idval);
+        }
 
 
 
