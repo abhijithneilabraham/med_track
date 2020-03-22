@@ -77,6 +77,7 @@
             android:layout_marginBottom="180dp"
             android:text="Date Of Birth"
             android:textSize="20dp"
+            android:id="@+id/dob1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

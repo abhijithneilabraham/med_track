@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -36,22 +40,23 @@ public class BlankFragment1 extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private DatabaseReference mDatabase;
     View rootview;
-    TextView name1;
+    TextView name1,gender1,address1,dob1,hosp1;
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String val;
     String[] valarray=new String[5];
     DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
-    HashMap hm =new HashMap();
+    //HashMap<String,String> hm =new HashMap<String, String>();
 
-    public void readuser(String h,String pid){
+    public String readuser(String h,String pid){
         dbref.child(pid).child(h).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String val=dataSnapshot.getValue(String.class);
-                hm.put(h,val);
+                 val=dataSnapshot.getValue(String.class);
+               // hm.put(h,val);
 
 
             }
@@ -61,6 +66,7 @@ public class BlankFragment1 extends Fragment {
 
             }
         });
+        return val;
     }
 
 
@@ -106,13 +112,37 @@ public class BlankFragment1 extends Fragment {
 
         rootview =inflater.inflate(R.layout.fragment_blank1,container,false);
         name1=(TextView)rootview.findViewById(R.id.name1);
+        gender1=(TextView)rootview.findViewById(R.id.gender1);
+        address1=(TextView)rootview.findViewById(R.id.address1);
+        hosp1=(TextView)rootview.findViewById(R.id.hosp1);
+        dob1=(TextView)rootview.findViewById(R.id.dob1);
+
+
+
         supplyactivity usr=(supplyactivity)getActivity();
         Bundle idbun=usr.getid();
         String idval=idbun.getString("id1");
 
-        String[] heads= {"Name","Address","Date Of Birth","Gender","Hospital Details"};
+        String[] heads= {"Name","Gender","Hospital Details","Address","Date Of Birth"};
         for(int i=0;i<5;i++){
-            readuser(heads[i],idval);
+          String  rval=readuser(heads[i],idval);
+            if(i==0){
+                name1.setText(rval);
+            }
+            else if(i==1){
+                gender1.setText(rval);
+            }
+            else if(i==2){
+                hosp1.setText(rval);
+            }
+            else if(i==3){
+                address1.setText(rval);
+            }
+            else if(i==4){
+                dob1.setText(rval);
+            }
+
+
         }
 
 
