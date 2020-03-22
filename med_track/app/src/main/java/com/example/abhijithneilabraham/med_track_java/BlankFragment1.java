@@ -17,7 +17,9 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 /**
@@ -85,6 +87,20 @@ public class BlankFragment1 extends Fragment {
         supplyactivity usr=(supplyactivity)getActivity();
         Bundle idbun=usr.getid();
         String idval=idbun.getString("id1");
+        DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
+        dbref.child(idval).child("Name").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String nameval=dataSnapshot.getValue(String.class);
+                name1.setText(nameval);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
 
 
@@ -93,7 +109,7 @@ public class BlankFragment1 extends Fragment {
 
 //    UserActivity usr=new UserActivity();
 //    String idn=usr.getidnum();
-    name1.setText(idval);
+
 
 
 
