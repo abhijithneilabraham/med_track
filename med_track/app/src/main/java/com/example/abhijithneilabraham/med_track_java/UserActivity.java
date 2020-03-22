@@ -1,7 +1,6 @@
 package com.example.abhijithneilabraham.med_track_java;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -16,12 +15,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
@@ -30,7 +25,6 @@ import java.util.List;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 public class UserActivity extends AppCompatActivity  {
     //initialisations
@@ -42,7 +36,6 @@ public class UserActivity extends AppCompatActivity  {
     String age;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    public String idnum;
     Spinner spinner1;
     EditText name,address,hosp;
     TextView namehead,addresshead,genderhead,hosphead,dobhead;
@@ -53,6 +46,7 @@ public class UserActivity extends AppCompatActivity  {
     int y=calendar.get(Calendar.YEAR)-18;
     int m=calendar.get(Calendar.MONTH);
     int d=calendar.get(Calendar.DATE);
+    String idnum;
 
 
 
@@ -136,14 +130,18 @@ public class UserActivity extends AppCompatActivity  {
         categories.add("Female");
         categories.add("Other");
         Intent inu=getIntent();
-        idnum=inu.getExtras().getString("idnumber");
-        Bundle bundle = new Bundle();
-
-        bundle.putString("id", idnum );
-        BlankFragment1 fragInfo = new BlankFragment1();
-        fragInfo.setArguments(bundle);
 
 
+     //   getSupportFragmentManager().beginTransaction().add( BlankFragment1.newInstance("id",idnum),"BlankFragment1").commit();
+
+//        Bundle data=new Bundle();
+//        data.putString("id",idnum);
+//        BlankFragment1 bl1= new BlankFragment1();
+//        bl1.setArguments(data);
+//        FragmentManager fm=getSupportFragmentManager();
+//        fm.beginTransaction().replace(R.id.blankone,bl1).commit();
+       // bl1.newInstance(idnum,"id");
+        //getSupportFragmentManager().beginTransaction().add(R.id.blankone, bl1).commit();
 
 
 
@@ -184,12 +182,14 @@ public class UserActivity extends AppCompatActivity  {
                 namedet=name.getText().toString();
                 hospdet=hosp.getText().toString();
                 adddet=address.getText().toString();
+                idnum=inu.getExtras().getString("idnumber");
                 String[] details= {namedet,adddet,hospdet,genderdet,dobdet};
                     for(int i=0;i<details.length;i++) {
                         writeNewUser(idnum, headers[i], details[i]);
 
                     }
                     Intent i2=new Intent(UserActivity.this,supplyactivity.class);
+                    i2.putExtra("id",idnum);
                     startActivity(i2);
             }
         });
@@ -213,8 +213,9 @@ public class UserActivity extends AppCompatActivity  {
         });
 
     }
-
-
+public String getidnum(){
+        return idnum;
+}
 
 
 }

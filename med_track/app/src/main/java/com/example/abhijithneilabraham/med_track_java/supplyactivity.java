@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -20,6 +21,7 @@ public class supplyactivity extends AppCompatActivity {
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
+    private String idn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,13 @@ public class supplyactivity extends AppCompatActivity {
 
         dl.addDrawerListener(t);
         t.syncState();
+        Intent in3=getIntent();
+        idn=in3.getExtras().getString("id");
+//        Bundle data=new Bundle();
+//        data.putString("id",idn);
+//        BlankFragment1 bl1= new BlankFragment1();
+//        bl1.setArguments(data);
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -44,8 +53,12 @@ public class supplyactivity extends AppCompatActivity {
                 switch(id)
                 {
                     case R.id.account:
-                        Toast.makeText(supplyactivity.this, "My Account",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(supplyactivity.this, idn,Toast.LENGTH_SHORT).show();
+
+
                         fragment=new BlankFragment1();
+
+
                         break;
 
 
@@ -74,6 +87,12 @@ public class supplyactivity extends AppCompatActivity {
 
 
     }
+    public Bundle getid(){
+        Bundle hm = new Bundle();
+        hm.putString("id1",idn);
+        return hm;
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
