@@ -40,6 +40,22 @@ public class BlankFragment1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
+
+    public void readuser(String h,String uid){
+        dbref.child(uid).child(h).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String nameval=dataSnapshot.getValue(String.class);
+                
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 
     public BlankFragment1() {
@@ -87,7 +103,8 @@ public class BlankFragment1 extends Fragment {
         supplyactivity usr=(supplyactivity)getActivity();
         Bundle idbun=usr.getid();
         String idval=idbun.getString("id1");
-        DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
+
+        String[] heads= {"Name","Address","Date Of Birth","Gender","Hospital Details"};
         dbref.child(idval).child("Name").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
