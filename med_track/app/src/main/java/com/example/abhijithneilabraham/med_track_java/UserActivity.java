@@ -129,6 +129,8 @@ public class UserActivity extends AppCompatActivity  {
         categories.add("Male");
         categories.add("Female");
         categories.add("Other");
+
+
         Intent inu=getIntent();
 
 
