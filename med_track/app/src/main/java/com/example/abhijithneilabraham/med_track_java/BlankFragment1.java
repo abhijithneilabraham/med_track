@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,14 +50,14 @@ public class BlankFragment1 extends Fragment {
     String val;
     String[] valarray=new String[5];
     DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
-    //HashMap<String,String> hm =new HashMap<String, String>();
+    HashMap<String,String> hm =new HashMap<String, String>();
 
-    public String readuser(String h,String pid){
+    public void readuser(String h,String pid){
         dbref.child(pid).child(h).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                  val=dataSnapshot.getValue(String.class);
-               // hm.put(h,val);
+               hm.put(h,val);
 
 
             }
@@ -66,7 +67,7 @@ public class BlankFragment1 extends Fragment {
 
             }
         });
-        return val;
+
     }
 
 
@@ -124,26 +125,49 @@ public class BlankFragment1 extends Fragment {
         String idval=idbun.getString("id1");
 
         String[] heads= {"Name","Gender","Hospital Details","Address","Date Of Birth"};
-        for(int i=0;i<5;i++){
-          String  rval=readuser(heads[i],idval);
-            if(i==0){
-                name1.setText(rval);
-            }
-            else if(i==1){
-                gender1.setText(rval);
-            }
-            else if(i==2){
-                hosp1.setText(rval);
-            }
-            else if(i==3){
-                address1.setText(rval);
-            }
-            else if(i==4){
-                dob1.setText(rval);
+        dbref.child(idval).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snp : dataSnapshot.getChildren()) {
+                    Log.v("",""+ snp.getKey()); //displays the key for the node
+                    Log.v("",""+ snp.getValue());
+                    //gives the value for given keyname
+                    String k=snp.getKey();
+                    String v=snp.getValue().toString();
+                    if(k=="Name") {
+                        name1.setText(v);
+                    }
+                }
             }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        }
+            }
+        });
+//        for(int i=0;i<5;i++){
+//          readuser(heads[i],idval);
+//
+//        }
+//        for(int k=0;k<5;k++){
+//            String setval=hm.get(heads[k]);
+//            if(k==0){
+//                name1.setText(setval);
+//            }
+//            else if(k==1){
+//                gender1.setText(setval);
+//            }
+//            else if(k==2){
+//                hosp1.setText(setval);
+//            }
+//            else if(k==3){
+//                address1.setText(setval);
+//            }
+//            else if(k==4){
+//                dob1.setText(setval);
+//            }
+//        }
+
 
 
 

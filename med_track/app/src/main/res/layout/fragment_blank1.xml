@@ -24,7 +24,7 @@
             android:layout_marginStart="144dp"
             android:layout_marginBottom="560dp"
             android:gravity="center_horizontal"
-            android:text="Name"
+            android:text="Nam"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
