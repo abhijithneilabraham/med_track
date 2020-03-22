@@ -134,8 +134,20 @@ public class BlankFragment1 extends Fragment {
                     //gives the value for given keyname
                     String k=snp.getKey();
                     String v=snp.getValue().toString();
-                    if(k=="Name") {
+                    if(k.equals("Name")) {
                         name1.setText(v);
+                    }
+                    else if(k.equals("Gender")){
+                        gender1.setText(v);
+                    }
+                    else if(k.equals("Hospital Details")){
+                        hosp1.setText(v);
+                    }
+                    else if(k.equals("Address")){
+                        address1.setText(v);
+                    }
+                    else if(k.equals("Date Of Birth")){
+                        dob1.setText(v);
                     }
                 }
             }
