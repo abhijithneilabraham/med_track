@@ -53,7 +53,7 @@ public class supplyactivity extends AppCompatActivity {
                 switch(id)
                 {
                     case R.id.account:
-                        Toast.makeText(supplyactivity.this, idn,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(supplyactivity.this, "Details of the Customer",Toast.LENGTH_SHORT).show();
 
 
                         fragment=new BlankFragment1();
@@ -63,13 +63,19 @@ public class supplyactivity extends AppCompatActivity {
 
 
                     case R.id.cat1:
-                        Toast.makeText(supplyactivity.this, "Settings",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(supplyactivity.this, "Categoty 1 Products",Toast.LENGTH_SHORT).show();
+
                         fragment=new BlankFragment2();
                         break;
                     case R.id.cat2:
-                        Toast.makeText(supplyactivity.this, "My Cart",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(supplyactivity.this, "Category 2 products",Toast.LENGTH_SHORT).show();
                         fragment=new BlankFragment3();
                         break;
+                    case R.id.cat3:
+                        Toast.makeText(supplyactivity.this, "Category 3 products",Toast.LENGTH_SHORT).show();
+                        fragment=new BlankFragment4();
+                        break;
+
                     default:
                         return true;
                 }

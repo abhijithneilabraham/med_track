@@ -15,16 +15,16 @@
             android:id="@+id/spinnercat1"
             android:layout_width="207dp"
             android:layout_height="36dp"
-            android:layout_marginStart="124dp"
-            android:layout_marginBottom="552dp"
+            android:layout_marginStart="112dp"
+            android:layout_marginBottom="564dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <RelativeLayout
-            android:layout_width="194dp"
-            android:layout_height="112dp"
-            android:layout_marginStart="200dp"
-            android:layout_marginBottom="328dp"
+            android:layout_width="182dp"
+            android:layout_height="74dp"
+            android:layout_marginStart="212dp"
+            android:layout_marginBottom="364dp"
             android:background="@color/cardview_shadow_start_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginStart="164dp"
+            android:layout_marginStart="148dp"
             android:layout_marginBottom="628dp"
             android:text="Commodity Name "
             app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +52,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="164dp"
+            android:layout_marginStart="128dp"
             android:layout_marginBottom="500dp"
             android:text="Number of stock bought "
             app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +71,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="128dp"
+            android:layout_marginStart="148dp"
             android:layout_marginBottom="252dp"
             android:text="Number of Stock bought"
             app:layout_constraintBottom_toBottomOf="parent"

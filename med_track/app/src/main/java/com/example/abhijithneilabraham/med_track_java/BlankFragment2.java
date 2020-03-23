@@ -67,7 +67,7 @@ public class BlankFragment2 extends Fragment {
                              Bundle savedInstanceState) {
         rootview2=inflater.inflate(R.layout.fragment_blank2, container, false);
         String [] values =
-                {"First","Second","Third"};
+                {"Select an option","First","Second","Third"};
         spinnercat1=(Spinner)rootview2.findViewById(R.id.spinnercat1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
