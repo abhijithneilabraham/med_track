@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +34,7 @@ public class BlankFragment2 extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     String medname;
+    Button addcart;
 
 
     // TODO: Rename and change types of parameters
@@ -41,7 +44,9 @@ public class BlankFragment2 extends Fragment {
     public BlankFragment2() {
         // Required empty public constructor
     }
-
+    public void writeNewUser(String pid,String head,String data) {
+        database.getReference(uid).child(pid).child(head).setValue(data);
+    }
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -51,6 +56,7 @@ public class BlankFragment2 extends Fragment {
      * @return A new instance of fragment BlankFragment2.
      */
     // TODO: Rename and change types and number of parameters
+
     public static BlankFragment2 newInstance(String param1, String param2) {
         BlankFragment2 fragment = new BlankFragment2();
         Bundle args = new Bundle();
@@ -84,13 +90,28 @@ public class BlankFragment2 extends Fragment {
         ArrayAdapter<String> adapter2=new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values2);
         adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnercat1dur.setAdapter(adapter2);
+        spinnercat1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                medname=String.valueOf(spinnercat1.getSelectedItem());
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        addcart=(Button)rootview2.findViewById(R.id.submitfr1);
+        addcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         // Inflate the layout for this fragment
         return rootview2;
     }
-    public void writeNewUser(String pid,String head,String data) {
-        database.getReference(uid).child(pid).child(head).setValue(data);
-    }
+
 }
