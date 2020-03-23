@@ -7,22 +7,22 @@
     tools:context=".NewExisting">
 
     <Button
+        android:id="@+id/newusr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
+        android:layout_marginStart="156dp"
         android:layout_marginBottom="388dp"
         android:text="New User"
-        android:id="@+id/newusr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/exusr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginBottom="328dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginBottom="276dp"
         android:text="Existing User"
-        android:id="@+id/exusr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
