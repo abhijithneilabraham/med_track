@@ -59,13 +59,13 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/numberof"
+            android:id="@+id/numberofdose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginBottom="384dp"
             android:hint=" Dosage per duration "
-            android:inputType="number"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -85,7 +85,7 @@
             android:layout_marginStart="160dp"
             android:layout_marginBottom="176dp"
             android:hint=" Stock Bought "
-            android:inputType="number"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,9 +34,18 @@ public class BlankFragment2 extends Fragment {
     View rootview2;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    String comm="Commodities";
+    String comm="Commodity Names";
+    String Dur="Period";
+    String amountdur="Dosage";
+    String numstockstr="Stock";
     String cat1val;
     Button addcart;
+    String catdur1val;
+    String doseval;
+    String stockval;
+    String idval;
+
+    EditText dose,numStock;
 
 
     // TODO: Rename and change types of parameters
@@ -45,9 +55,10 @@ public class BlankFragment2 extends Fragment {
     public BlankFragment2() {
         // Required empty public constructor
     }
-    public void writeNewUser(String pid,String head,String data) {
-        database.getReference(uid).child(pid).child(comm).child(head).setValue(data);
+    public void writeNewUser(String pid,String par,String head,String data) {
+        database.getReference(uid).child(pid).child(comm).child(par).child(head).setValue(data);
     }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -82,7 +93,10 @@ public class BlankFragment2 extends Fragment {
         rootview2=inflater.inflate(R.layout.fragment_blank2, container, false);
         supplyactivity usr=(supplyactivity)getActivity();
         Bundle idbun=usr.getid();
-        String idval=idbun.getString("id1");
+        idval=idbun.getString("id1");
+        dose=(EditText)rootview2.findViewById(R.id.numberofdose);
+        numStock=(EditText)rootview2.findViewById(R.id.numberofstock);
+
         String [] values =
                 {"Select an option","First","Second","Third"};
         spinnercat1=(Spinner)rootview2.findViewById(R.id.spinnercat1);
@@ -106,17 +120,46 @@ public class BlankFragment2 extends Fragment {
             }
         });
 
+        spinnercat1dur.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                catdur1val=String.valueOf(spinnercat1dur.getSelectedItem());
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+       //int stockvalnum=Integer.parseInt(stockval);
+       //int dosevalnum=Integer.parseInt(doseval);
         addcart=(Button)rootview2.findViewById(R.id.submitfr1);
         addcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                writeNewUser(idval,cat1val,cat1val);
-
+                //database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(dosevalnum);
+                //database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockvalnum);
+            buttonClicked(v);
             }
         });
 
         // Inflate the layout for this fragment
         return rootview2;
+    }
+    public void buttonClicked (View view) {
+        addcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doseval=dose.getText().toString();
+                stockval=numStock.getText().toString();
+            database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(doseval);
+            database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockval);
+            }
+        });
     }
 
 }
