@@ -33,7 +33,8 @@ public class BlankFragment2 extends Fragment {
     View rootview2;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    String medname;
+    String comm="Commodities";
+    String cat1val;
     Button addcart;
 
 
@@ -45,7 +46,7 @@ public class BlankFragment2 extends Fragment {
         // Required empty public constructor
     }
     public void writeNewUser(String pid,String head,String data) {
-        database.getReference(uid).child(pid).child(head).setValue(data);
+        database.getReference(uid).child(pid).child(comm).child(head).setValue(data);
     }
     /**
      * Use this factory method to create a new instance of
@@ -79,6 +80,9 @@ public class BlankFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootview2=inflater.inflate(R.layout.fragment_blank2, container, false);
+        supplyactivity usr=(supplyactivity)getActivity();
+        Bundle idbun=usr.getid();
+        String idval=idbun.getString("id1");
         String [] values =
                 {"Select an option","First","Second","Third"};
         spinnercat1=(Spinner)rootview2.findViewById(R.id.spinnercat1);
@@ -93,7 +97,7 @@ public class BlankFragment2 extends Fragment {
         spinnercat1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                medname=String.valueOf(spinnercat1.getSelectedItem());
+                cat1val=String.valueOf(spinnercat1.getSelectedItem());
             }
 
             @Override
@@ -106,7 +110,8 @@ public class BlankFragment2 extends Fragment {
         addcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                writeNewUser(idval,cat1val,cat1val);
+
             }
         });
 
