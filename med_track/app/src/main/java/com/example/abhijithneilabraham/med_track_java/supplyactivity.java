@@ -34,7 +34,7 @@ public class supplyactivity extends AppCompatActivity {
         dl.addDrawerListener(t);
         t.syncState();
         Intent in3=getIntent();
-        idn=in3.getExtras().getString("id");
+        idn=in3.getExtras().getString("ide");
 //        Bundle data=new Bundle();
 //        data.putString("id",idn);
 //        BlankFragment1 bl1= new BlankFragment1();

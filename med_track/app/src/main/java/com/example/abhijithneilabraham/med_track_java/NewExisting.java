@@ -15,17 +15,24 @@ Button newusr,exusr;
         setContentView(R.layout.activity_new_existing);
         newusr=(Button)findViewById(R.id.newusr);
         exusr=(Button)findViewById(R.id.exusr);
+        Intent inn=getIntent();
+        String idnum=inn.getExtras().getString("idnumber");
         newusr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            Intent in=new Intent(NewExisting.this,UserActivity.class);
+            in.putExtra("idn",idnum);
+           startActivity(in);
 
             }
         });
         exusr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent in2=new Intent(NewExisting.this,supplyactivity.class);
+                in2.putExtra("ide",idnum);
+                startActivity(in2);
+
             }
         });
     }

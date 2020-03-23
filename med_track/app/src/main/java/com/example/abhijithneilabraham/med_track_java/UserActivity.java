@@ -184,14 +184,14 @@ public class UserActivity extends AppCompatActivity  {
                 namedet=name.getText().toString();
                 hospdet=hosp.getText().toString();
                 adddet=address.getText().toString();
-                idnum=inu.getExtras().getString("idnumber");
+                idnum=inu.getExtras().getString("idn");
                 String[] details= {namedet,adddet,hospdet,genderdet,dobdet};
                     for(int i=0;i<details.length;i++) {
                         writeNewUser(idnum, headers[i], details[i]);
 
                     }
                     Intent i2=new Intent(UserActivity.this,supplyactivity.class);
-                    i2.putExtra("id",idnum);
+                    i2.putExtra("ide",idnum);
                     startActivity(i2);
             }
         });
