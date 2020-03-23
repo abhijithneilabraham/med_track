@@ -24,7 +24,7 @@ public class BlankFragment2 extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    Spinner spinnercat1;
+    Spinner spinnercat1,spinnercat1dur;
     View rootview2;
 
     // TODO: Rename and change types of parameters
@@ -72,6 +72,12 @@ public class BlankFragment2 extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnercat1.setAdapter(adapter);
+        String[] values2={"Days","Weeks","Months"};
+        spinnercat1dur=(Spinner)rootview2.findViewById(R.id.spinnercat1dur);
+        ArrayAdapter<String> adapter2=new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values2);
+        adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinnercat1dur.setAdapter(adapter2);
+
 
 
         // Inflate the layout for this fragment
