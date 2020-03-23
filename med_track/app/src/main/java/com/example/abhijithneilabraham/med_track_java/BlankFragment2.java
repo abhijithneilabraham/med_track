@@ -156,8 +156,10 @@ public class BlankFragment2 extends Fragment {
             public void onClick(View v) {
                 doseval=dose.getText().toString();
                 stockval=numStock.getText().toString();
-            database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(doseval);
-            database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockval);
+                int dosevalnum=Integer.parseInt(doseval);
+                int stockvalnum=Integer.parseInt(stockval);
+            database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(dosevalnum);
+            database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockvalnum);
             }
         });
     }
