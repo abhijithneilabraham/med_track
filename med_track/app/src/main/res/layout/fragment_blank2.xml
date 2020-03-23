@@ -64,7 +64,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginBottom="384dp"
-            android:text=" Dosage per duration "
+            android:hint=" Dosage per duration "
+            android:inputType="number"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -83,7 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
             android:layout_marginBottom="176dp"
-            android:text=" Stock Bought "
+            android:hint=" Stock Bought "
+            android:inputType="number"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -93,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="180dp"
             android:layout_marginBottom="76dp"
-            android:text="Submit"
+            android:text="Add to cart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

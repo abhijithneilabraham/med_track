@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,10 @@ public class BlankFragment2 extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     Spinner spinnercat1,spinnercat1dur;
     View rootview2;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    String medname;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -82,5 +89,8 @@ public class BlankFragment2 extends Fragment {
 
         // Inflate the layout for this fragment
         return rootview2;
+    }
+    public void writeNewUser(String pid,String head,String data) {
+        database.getReference(uid).child(pid).child(head).setValue(data);
     }
 }
