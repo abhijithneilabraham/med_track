@@ -16,8 +16,11 @@ import android.widget.Spinner;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -158,8 +161,12 @@ public class BlankFragment2 extends Fragment {
                 stockval=numStock.getText().toString();
                 int dosevalnum=Integer.parseInt(doseval);
                 int stockvalnum=Integer.parseInt(stockval);
+                String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
             database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(dosevalnum);
             database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockvalnum);
+            database.getReference(uid).child(idval).child(comm).child(cat1val).child("Date").setValue(date);
+
             }
         });
     }

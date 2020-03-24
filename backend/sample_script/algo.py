@@ -37,8 +37,6 @@ class Tracker:
         balance=(self.updatetime(self.starttime)-now).days
         if balance<self.maxdur:
             self.flag=1
-            
-
         return balance,self.flag
     
         
