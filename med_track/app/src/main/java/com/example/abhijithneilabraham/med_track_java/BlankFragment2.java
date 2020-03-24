@@ -103,7 +103,7 @@ public class BlankFragment2 extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnercat1.setAdapter(adapter);
-        String[] values2={"Days","Weeks","Months"};
+        String[] values2={"Day","Week","Month"};
         spinnercat1dur=(Spinner)rootview2.findViewById(R.id.spinnercat1dur);
         ArrayAdapter<String> adapter2=new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values2);
         adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
