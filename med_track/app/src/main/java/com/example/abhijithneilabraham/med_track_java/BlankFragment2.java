@@ -149,7 +149,35 @@ public class BlankFragment2 extends Fragment {
             public void onClick(View v) {
                 //database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(dosevalnum);
                 //database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockvalnum);
-            buttonClicked(v);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Confirm Add to cart?")
+                        .setTitle("Add to cart")
+                        .setPositiveButton("Add to cart", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                doseval=dose.getText().toString();
+                                stockval=numStock.getText().toString();
+                                int dosevalnum=Integer.parseInt(doseval);
+                                int stockvalnum=Integer.parseInt(stockval);
+                                String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                                database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).removeValue();
+                                database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(dosevalnum); //setting the dosage and duration
+                                database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockvalnum);
+                                database.getReference(uid).child(idval).child(comm).child(cat1val).child("Date").setValue(date);
+
+                                // CONFIRM
+                            }
+                        })
+                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // CANCEL
+                            }
+                        });
+                // Create the AlertDialog object and return it
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+                buttonClicked(v);
             }
         });
 
@@ -174,6 +202,7 @@ public class BlankFragment2 extends Fragment {
                                 database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(dosevalnum); //setting the dosage and duration
                                 database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockvalnum);
                                 database.getReference(uid).child(idval).child(comm).child(cat1val).child("Date").setValue(date);
+
                                 // CONFIRM
                             }
                         })
@@ -186,7 +215,6 @@ public class BlankFragment2 extends Fragment {
 
                 AlertDialog dialog = builder.create();
                 dialog.show();
-
 
 
             }
