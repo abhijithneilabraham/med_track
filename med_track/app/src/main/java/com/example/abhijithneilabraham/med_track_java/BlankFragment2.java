@@ -1,5 +1,7 @@
 package com.example.abhijithneilabraham.med_track_java;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -157,15 +160,34 @@ public class BlankFragment2 extends Fragment {
         addcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doseval=dose.getText().toString();
-                stockval=numStock.getText().toString();
-                int dosevalnum=Integer.parseInt(doseval);
-                int stockvalnum=Integer.parseInt(stockval);
-                String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Confirm Add to cart?")
+                        .setTitle("Add to cart")
+                        .setPositiveButton("Add to cart", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                doseval=dose.getText().toString();
+                                stockval=numStock.getText().toString();
+                                int dosevalnum=Integer.parseInt(doseval);
+                                int stockvalnum=Integer.parseInt(stockval);
+                                String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                                database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).removeValue();
+                                database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(dosevalnum); //setting the dosage and duration
+                                database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockvalnum);
+                                database.getReference(uid).child(idval).child(comm).child(cat1val).child("Date").setValue(date);
+                                // CONFIRM
+                            }
+                        })
+                        .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // CANCEL
+                            }
+                        });
+                // Create the AlertDialog object and return it
 
-            database.getReference(uid).child(idval).child(comm).child(cat1val).child(Dur).child(catdur1val).setValue(dosevalnum);
-            database.getReference(uid).child(idval).child(comm).child(cat1val).child(numstockstr).setValue(stockvalnum);
-            database.getReference(uid).child(idval).child(comm).child(cat1val).child("Date").setValue(date);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
 
             }
         });
