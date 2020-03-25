@@ -41,6 +41,6 @@ class Tracker:
     
         
         
-track=Tracker(2,"Day",200,"2020-01-01")
-remtime,flag=track.calctime()
-print("Remaining days",remtime,"with flag",flag)
+#track=Tracker(2,"Day",200,"2020-01-01")
+#remtime,flag=track.calctime()
+#print("Remaining days",remtime,"with flag",flag)
