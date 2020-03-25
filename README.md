@@ -7,7 +7,7 @@ Two methods of Dev-
 2)Using native java only
 
 
-Check out resource.md to find what the idea is about
+Check out ```resource.md``` to find what the idea is about
 
 
 Contributions welcomed
