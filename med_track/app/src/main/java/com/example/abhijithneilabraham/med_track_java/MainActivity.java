@@ -10,6 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,6 +30,35 @@ public class MainActivity extends AppCompatActivity {
     TextView signIn;
     FirebaseAuth firebaseAuth;
 
+    public void postData() {
+        // Create a new HttpClient and Post Header
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+
+        final   String url ="https://medtrack1234.pythonanywhere.com/";
+
+        //  final String url = url1.replaceAll("\\s+", "");
+
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+        });
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent I = new Intent(MainActivity.this, ActivityLogin.class);
                 startActivity(I);
+                postData();
             }
         });
     }
