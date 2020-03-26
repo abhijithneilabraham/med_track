@@ -7,6 +7,8 @@ Two methods of Dev-
 2)Using native java only
 
 
+check out the folder ```med_track``` for native android source code
+
 Check out ```resource.md``` to find what the idea is about
 
 
