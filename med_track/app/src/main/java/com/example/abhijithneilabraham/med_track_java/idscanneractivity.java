@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONException;
@@ -32,8 +33,9 @@ import org.json.JSONObject;
 
 
 public class idscanneractivity extends AppCompatActivity {
-    private Button buttonScan,btnlogout2,pendingst;
+    private Button buttonScan,btnlogout2,pendingst,enterid;
     private TextView textViewName, textViewAddress;
+    private EditText idedit;
 
     //qr code scanner object
     private IntentIntegrator qrScan;
@@ -76,6 +78,22 @@ public class idscanneractivity extends AppCompatActivity {
         buttonScan = (Button) findViewById(R.id.qr);
         btnlogout2=(Button)findViewById(R.id.btnLogOut2);
         pendingst=(Button)findViewById(R.id.updatedstock);
+        enterid=(Button)findViewById(R.id.enterid);
+        idedit=(EditText)findViewById(R.id.idedittext);
+
+        enterid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(idedit.getVisibility()==View.GONE){
+
+                    idedit.setVisibility(View.VISIBLE);
+
+                }else{
+
+                    idedit.setVisibility(View.GONE);
+                }
+            }
+        });
 
         //intializing scan object
         qrScan = new IntentIntegrator(this);
