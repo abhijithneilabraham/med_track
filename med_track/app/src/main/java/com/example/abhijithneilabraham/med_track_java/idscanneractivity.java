@@ -33,7 +33,7 @@ import org.json.JSONObject;
 
 
 public class idscanneractivity extends AppCompatActivity {
-    private Button buttonScan,btnlogout2,pendingst,enterid;
+    private Button buttonScan,btnlogout2,pendingst,enterid,submit2;
     private TextView textViewName, textViewAddress;
     private EditText idedit;
 
@@ -87,6 +87,7 @@ public class idscanneractivity extends AppCompatActivity {
                 if(idedit.getVisibility()==View.GONE){
 
                     idedit.setVisibility(View.VISIBLE);
+                    idnum=idedit.getText().toString();
 
                 }else{
 
@@ -113,6 +114,18 @@ public class idscanneractivity extends AppCompatActivity {
             startActivity(stv);
         }
     });
+
+submit2=findViewById(R.id.submit2);
+submit2.setOnClickListener(new View.OnClickListener() {
+                               @Override
+                               public void onClick(View v) {
+                                   Intent in=new Intent(idscanneractivity.this,NewExisting.class);
+                                   in.putExtra("idnumber",idnum);
+
+                                   startActivity(in);
+                               }
+                           }
+);
         btnlogout2.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
@@ -122,6 +135,8 @@ public class idscanneractivity extends AppCompatActivity {
                                           }
                                       }
         );
+
+
     }
 
     //Getting the scan results
@@ -135,10 +150,7 @@ public class idscanneractivity extends AppCompatActivity {
             } else {
 
             idnum=result.getContents();
-            Intent in=new Intent(idscanneractivity.this,NewExisting.class);
-                in.putExtra("idnumber",idnum);
 
-                startActivity(in);
 
 
 

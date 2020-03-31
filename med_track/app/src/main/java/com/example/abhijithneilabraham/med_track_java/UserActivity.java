@@ -48,8 +48,6 @@ public class UserActivity extends AppCompatActivity  {
     int d=calendar.get(Calendar.DATE);
     String idnum;
 
-
-
     //methods
     public void writeNewUser(String pid,String head,String data) {
         database.getReference(uid).child(pid).child(head).setValue(data);

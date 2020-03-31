@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="136dp"
-        android:layout_marginBottom="464dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="364dp"
         android:text="Scan Patient ID"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -57,6 +57,16 @@
         android:layout_marginStart="132dp"
         android:layout_marginBottom="276dp"
         android:text="See pending stocks"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/submit2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginBottom="148dp"
+        android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
