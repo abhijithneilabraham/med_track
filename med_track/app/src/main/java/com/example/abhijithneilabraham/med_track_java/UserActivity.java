@@ -184,6 +184,12 @@ public class UserActivity extends AppCompatActivity  {
                 adddet=address.getText().toString();
                 idnum=inu.getExtras().getString("idn");
                 String[] details= {namedet,adddet,hospdet,genderdet,dobdet};
+                storevals stval=new storevals();
+                stval.set_name(namedet);
+                stval.set_address(adddet);
+                stval.set_dob(dobdet);
+                stval.set_gender(genderdet);
+                stval.set_hosp(hospdet);
                     for(int i=0;i<details.length;i++) {
                         writeNewUser(idnum, headers[i], details[i]);
 

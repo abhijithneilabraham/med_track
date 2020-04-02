@@ -17,9 +17,11 @@ Button newusr,exusr;
         exusr=(Button)findViewById(R.id.exusr);
         Intent inn=getIntent();
         String idnum=inn.getExtras().getString("idnumber");
+        storevals stval1=new storevals();
         newusr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stval1.set_user("newusr");
             Intent in=new Intent(NewExisting.this,UserActivity.class);
             in.putExtra("idn",idnum);
            startActivity(in);
@@ -29,8 +31,11 @@ Button newusr,exusr;
         exusr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stval1.set_user("extusr");
                 Intent in2=new Intent(NewExisting.this,supplyactivity.class);
                 in2.putExtra("ide",idnum);
+
+
                 startActivity(in2);
 
             }

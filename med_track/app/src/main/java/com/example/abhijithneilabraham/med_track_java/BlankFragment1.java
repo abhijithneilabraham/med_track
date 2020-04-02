@@ -43,7 +43,7 @@ public class BlankFragment1 extends Fragment {
     View rootview;
     TextView name1,gender1,address1,dob1,hosp1;
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
+    storevals stvalfr1=new storevals();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -125,38 +125,45 @@ public class BlankFragment1 extends Fragment {
         String idval=idbun.getString("id1");
 
         String[] heads= {"Name","Gender","Hospital Details","Address","Date Of Birth"};
-        dbref.child(idval).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snp : dataSnapshot.getChildren()) {
-                    Log.v("",""+ snp.getKey()); //displays the key for the node
-                    Log.v("",""+ snp.getValue());
-                    //gives the value for given keyname
-                    String k=snp.getKey();
-                    String v=snp.getValue().toString();
-                    if(k.equals("Name")) {
-                        name1.setText(v);
-                    }
-                    else if(k.equals("Gender")){
-                        gender1.setText(v);
-                    }
-                    else if(k.equals("Hospital Details")){
-                        hosp1.setText(v);
-                    }
-                    else if(k.equals("Address")){
-                        address1.setText(v);
-                    }
-                    else if(k.equals("Date Of Birth")){
-                        dob1.setText(v);
+
+        String curruser=stvalfr1.getuser();
+        if(curruser=="extusr") {
+            dbref.child(idval).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snp : dataSnapshot.getChildren()) {
+                        Log.v("", "" + snp.getKey()); //displays the key for the node
+                        Log.v("", "" + snp.getValue());
+                        //gives the value for given keyname
+                        String k = snp.getKey();
+                        String v = snp.getValue().toString();
+                        if (k.equals("Name")) {
+                            name1.setText(v);
+                        } else if (k.equals("Gender")) {
+                            gender1.setText(v);
+                        } else if (k.equals("Hospital Details")) {
+                            hosp1.setText(v);
+                        } else if (k.equals("Address")) {
+                            address1.setText(v);
+                        } else if (k.equals("Date Of Birth")) {
+                            dob1.setText(v);
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
+        else if(curruser=="newusr"){
+            name1.setText(stvalfr1.getname());
+            gender1.setText(stvalfr1.getgender());
+            hosp1.setText(stvalfr1.gethosp());
+            address1.setText(stvalfr1.getaddress());
+            dob1.setText(stvalfr1.getdob());
+        }
 //        for(int i=0;i<5;i++){
 //          readuser(heads[i],idval);
 //
