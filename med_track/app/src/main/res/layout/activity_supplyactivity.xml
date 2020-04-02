@@ -14,7 +14,11 @@
         android:layout_height="match_parent"
         >
 
-
+        <TextView
+            android:layout_width="249dp"
+            android:layout_height="136dp"
+            android:text="name"
+            android:id="@+id/testpurpose"/>
 
         <FrameLayout
             android:id="@+id/flContent"

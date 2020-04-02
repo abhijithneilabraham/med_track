@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -22,6 +23,7 @@ public class supplyactivity extends AppCompatActivity {
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     private String idn;
+    TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,10 @@ public class supplyactivity extends AppCompatActivity {
         t.syncState();
         Intent in3=getIntent();
         idn=in3.getExtras().getString("ide");
+        test=(TextView)findViewById(R.id.testpurpose);
+        storevals stv=in3.getParcelableExtra("storevals");
+        test.setText(stv.getuser());
+
 //        Bundle data=new Bundle();
 //        data.putString("id",idn);
 //        BlankFragment1 bl1= new BlankFragment1();
