@@ -125,6 +125,9 @@ public class BlankFragment1 extends Fragment {
         String idval=idbun.getString("id1");
 
         String[] heads= {"Name","Gender","Hospital Details","Address","Date Of Birth"};
+        Bundle bundle = this.getArguments();
+
+            stvalfr1= bundle.getParcelable("Student");
 
         String curruser=stvalfr1.getuser();
         if(curruser=="extusr") {

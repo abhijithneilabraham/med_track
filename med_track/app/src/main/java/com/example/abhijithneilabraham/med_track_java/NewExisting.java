@@ -22,6 +22,14 @@ Button newusr,exusr;
             @Override
             public void onClick(View v) {
                 stval1.set_user("newusr");
+//                BlankFragment1 blfr1=new BlankFragment1();
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelable("storevals",stval1);
+
+                Intent infr=new Intent(NewExisting.this,supplyactivity.class);
+                infr.putExtra("storevals",stval1);
+                startActivityForResult(infr,1);
+
             Intent in=new Intent(NewExisting.this,UserActivity.class);
             in.putExtra("idn",idnum);
            startActivity(in);
@@ -32,6 +40,9 @@ Button newusr,exusr;
             @Override
             public void onClick(View v) {
                 stval1.set_user("extusr");
+                Intent infr2=new Intent(NewExisting.this,BlankFragment1.class);
+                infr2.putExtra("storevals",stval1);
+                startActivityForResult(infr2,1);
                 Intent in2=new Intent(NewExisting.this,supplyactivity.class);
                 in2.putExtra("ide",idnum);
 

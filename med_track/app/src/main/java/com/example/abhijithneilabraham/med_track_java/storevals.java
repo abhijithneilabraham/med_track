@@ -10,7 +10,7 @@ public class storevals implements Parcelable
     private ParcelUuid[] val_uuids;
 
     public String getuser() {
-        return this.currentuser;
+        return currentuser;
     }
 
     public void set_user(String user) {
@@ -18,7 +18,7 @@ public class storevals implements Parcelable
     }
 
     public String getname() {
-        return this.namestore;
+        return namestore;
     }
 
     public void set_name(String name) {
@@ -26,28 +26,28 @@ public class storevals implements Parcelable
     }
 
     public String getgender() {
-        return this.genderstore;
+        return genderstore;
     }
 
     public void set_gender(String gender) {
         this.genderstore = gender;
     }
     public String gethosp() {
-        return this.hospitalstore;
+        return hospitalstore;
     }
 
     public void set_hosp(String hosp) {
         this.hospitalstore = hosp;
     }
     public String getaddress() {
-        return this.addressstore;
+        return addressstore;
     }
 
     public void set_address(String address) {
         this.addressstore = address;
     }
     public String getdob() {
-        return this.dobstore;
+        return dobstore;
     }
 
     public void set_dob(String dob) {
@@ -91,15 +91,25 @@ public class storevals implements Parcelable
     public storevals()
     {}  //empty constructor
 
-    public storevals(Parcel in)
+    protected storevals(Parcel in)
     {
-        super();
-        readFromParcel(in);
+
+        namestore = in.readString();
+        addressstore=in.readString();
+        hospitalstore=in.readString();
+        dobstore=in.readString();
+        genderstore=in.readString();
+        currentuser=in.readString();
     }
 
     public void readFromParcel(Parcel in)
     {
         namestore = in.readString();
+        addressstore=in.readString();
+        hospitalstore=in.readString();
+        dobstore=in.readString();
+        genderstore=in.readString();
+        currentuser=in.readString();
     }
 
     public static final Parcelable.Creator<storevals> CREATOR = new Parcelable.Creator<storevals>()
@@ -124,6 +134,12 @@ public class storevals implements Parcelable
     public void writeToParcel(Parcel out, int flags)
     {
         out.writeString(namestore);
+        out.writeString(addressstore);
+        out.writeString(hospitalstore);
+        out.writeString(genderstore);
+        out.writeString(dobstore);
+        out.writeString(currentuser);
+
     }
 
 

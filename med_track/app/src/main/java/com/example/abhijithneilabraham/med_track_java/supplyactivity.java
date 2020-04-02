@@ -98,6 +98,11 @@ public class supplyactivity extends AppCompatActivity {
         hm.putString("id1",idn);
         return hm;
     }
+//    public Bundle getstoreval(){
+//        Bundle st=new Bundle();
+//
+//
+//    }
 
 
     @Override
