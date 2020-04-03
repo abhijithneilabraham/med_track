@@ -40,15 +40,20 @@ public class supplyactivity extends AppCompatActivity {
         //idn=in3.getExtras().getString("ide");
         test=(TextView)findViewById(R.id.testpurpose);
         storevals stv=in3.getParcelableExtra("storevalu");
-        n=stv.getname();
-        a=stv.getaddress();
-        h=stv.gethosp();
-        d=stv.getdob();
-        g=stv.getgender();
         c=stv.getuser();
-        i=stv.getidstore();
+        i = stv.getidstore();
+        if(c.equals("newusr")) {
+            n = stv.getname();
+            a = stv.getaddress();
+            h = stv.gethosp();
+            d = stv.getdob();
+            g = stv.getgender();
 
-        test.setText(c);
+
+        }
+
+
+        test.setText(i);
 
 //        Bundle data=new Bundle();
 //        data.putString("id",idn);
@@ -110,7 +115,7 @@ public class supplyactivity extends AppCompatActivity {
     }
     public Bundle getid(){
         Bundle hm = new Bundle();
-        hm.putString("id1",idn);
+        hm.putString("id1",i);
         hm.putString("namestore",n);
         hm.putString("addressstore",a);
         hm.putString("hospitalstore",h);

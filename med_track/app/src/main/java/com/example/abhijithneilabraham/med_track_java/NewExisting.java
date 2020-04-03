@@ -47,13 +47,14 @@ Button newusr,exusr;
 ////                Intent infr2=new Intent(NewExisting.this,UserActivity.class);
 ////                infr2.putExtra("userval",set_usr);
 //               // startActivityForResult(infr2,1);
-//                Intent in2=new Intent(NewExisting.this,supplyactivity.class);
-//                stval1.set_user("extusr");
-//                stval1.set_id(idnum);
-//                in2.putExtra("uservalext",stval1);
-//
-//
-//                startActivity(in2);
+                stval1.set_user("extusr");
+                stval1.set_id(idnum);
+                Intent in2=new Intent(NewExisting.this,supplyactivity.class);
+
+                in2.putExtra("storevalu",stval1);
+
+
+                startActivity(in2);
 
             }
         });
