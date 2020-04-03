@@ -8,9 +8,8 @@ Created on Wed Mar 25 02:38:23 2020
 def dbupdate():
     from algo import Tracker
     import pyrebase
-    config = {
-#mail me at abhijithneilabrahampk@gmail.com to work on this project ,I will share the config file
-    }
+    
+  
     firebase = pyrebase.initialize_app(config)
     db = firebase.database()
     suppliers=db.shallow().get().val()
@@ -27,6 +26,7 @@ def dbupdate():
             for k in commname:
                 dat=commname[k]
                 starttime,stock=dat["Date"],dat["Stock"]
+                print(starttime,stock)
                 duration,days=list(dat["Period"].keys())[0],list(dat["Period"].values())[0]
                 # print(starttime)
                 # print(stock)
@@ -34,11 +34,11 @@ def dbupdate():
                 # print(duration)
                 track=Tracker(days,duration,stock,starttime)
                 remtime,flag=track.calctime()
-                db.child(i).child(j).child("Commodity Names").child("Remaining Days").set(remtime)
-                db.child(i).child(j).child("Commodity Names").child("Flag").set(flag)
+                db.child(i).child(j).child("Commodity Names").child(k).child("Remaining Days").set(remtime)
+                db.child(i).child(j).child("Commodity Names").child(k).child("Flag").set(flag)
                 #print("Remaining days",remtime,"with flag",flag)
     return remtime,flag
-
+dbupdate()
 
 
 

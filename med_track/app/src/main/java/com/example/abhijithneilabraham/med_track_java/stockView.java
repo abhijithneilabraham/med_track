@@ -19,6 +19,7 @@ public class stockView extends AppCompatActivity {
     TextView namest,addressst,commst,remtime;
     String name,address,comm,remdays;
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    String flag;
 
 
     @Override
@@ -61,14 +62,20 @@ public class stockView extends AppCompatActivity {
                     //gives the value for given keyname
                     String k=snp.getKey();
                     String v=snp.getValue().toString();
+
                     DatabaseReference m=dbref.child(k).child("Commodity Names").child("Flag");
                     addressst.setText(k);
                     m.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
                             long f=dataSnapshot2.getValue(long.class);
-                            String flag=""+f;
-                            namest.setText(flag);
+                             flag=""+f;
+                            if(flag.equals("1")){
+
+                                String nameval=dataSnapshot.child(k).child("Name").getValue(String.class);
+
+                                namest.setText(nameval);
+                            }
 
                         }
 
