@@ -172,32 +172,39 @@ public class UserActivity extends AppCompatActivity  {
         String[] headers= {nameh,addh,hosph,genderh,dobh};
 
 
-
         submit1.setOnClickListener(new View.OnClickListener() {
 
 
 
             @Override
             public void onClick(View v) {
-                namedet=name.getText().toString();
-                hospdet=hosp.getText().toString();
-                adddet=address.getText().toString();
+
                // idnum=inu.getExtras().getString("idn");
                 String[] details= {namedet,adddet,hospdet,genderdet,dobdet};
-                storevals stval=inu.getParcelableExtra("userval");
+
               //  String cuser=inu.getExtras().getString("userval");
+
+               // storevals stval2=new storevals();
+
+                //stval2.set_user(cuser);
+               // stval2.set_id(idnum);
+                storevals stval=inu.getParcelableExtra("userval");
                 String cuser=stval.getuser();
                 idnum=stval.getidstore();
                 storevals stval2=new storevals();
+                stval2.set_id(idnum);
+                stval2.set_user(cuser);
+                namedet=name.getText().toString();
+                hospdet=hosp.getText().toString();
+                adddet=address.getText().toString();
                 stval2.set_name(namedet);
                 stval2.set_address(adddet);
                 stval2.set_dob(dobdet);
                 stval2.set_gender(genderdet);
                 stval2.set_hosp(hospdet);
-                stval2.set_user(cuser);
-                stval2.set_id(idnum);
-                name.setText(idnum);
 
+                Intent i2=new Intent(UserActivity.this,supplyactivity.class);
+                i2.putExtra("storevalu",stval2);
 
 //                Intent intentu=new Intent(UserActivity.this,supplyactivity.class);
 //                intentu.putExtra("storevalu",stval);
@@ -207,8 +214,7 @@ public class UserActivity extends AppCompatActivity  {
                         writeNewUser(idnum, headers[i], details[i]);
 
                     }
-                    Intent i2=new Intent(UserActivity.this,supplyactivity.class);
-                    i2.putExtra("storevalu",stval);
+
                     startActivity(i2);
             }
         });

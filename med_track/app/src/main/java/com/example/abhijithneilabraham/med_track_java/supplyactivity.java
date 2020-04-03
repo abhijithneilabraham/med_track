@@ -24,7 +24,7 @@ public class supplyactivity extends AppCompatActivity {
     private NavigationView nv;
     private String idn;
     String n,a,h,d,g,c,i;
-  //  TextView test;
+    TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class supplyactivity extends AppCompatActivity {
         t.syncState();
         Intent in3=getIntent();
         //idn=in3.getExtras().getString("ide");
-        //test=(TextView)findViewById(R.id.testpurpose);
+        test=(TextView)findViewById(R.id.testpurpose);
         storevals stv=in3.getParcelableExtra("storevalu");
         n=stv.getname();
         a=stv.getaddress();
@@ -48,7 +48,7 @@ public class supplyactivity extends AppCompatActivity {
         c=stv.getuser();
         i=stv.getidstore();
 
-       // test.setText(stv.getuser());
+        
 
 //        Bundle data=new Bundle();
 //        data.putString("id",idn);
@@ -110,7 +110,7 @@ public class supplyactivity extends AppCompatActivity {
     }
     public Bundle getid(){
         Bundle hm = new Bundle();
-        hm.putString("id1",i);
+        hm.putString("id1",idn);
         hm.putString("namestore",n);
         hm.putString("addressstore",a);
         hm.putString("hospitalstore",h);

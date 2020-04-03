@@ -43,16 +43,17 @@ Button newusr,exusr;
         exusr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String set_usr="extusr";
-//                Intent infr2=new Intent(NewExisting.this,UserActivity.class);
-//                infr2.putExtra("userval",set_usr);
-               // startActivityForResult(infr2,1);
-                Intent in2=new Intent(NewExisting.this,supplyactivity.class);
-                in2.putExtra("ide",idnum);
-                in2.putExtra("userval",set_usr);
 
-
-                startActivity(in2);
+////                Intent infr2=new Intent(NewExisting.this,UserActivity.class);
+////                infr2.putExtra("userval",set_usr);
+//               // startActivityForResult(infr2,1);
+//                Intent in2=new Intent(NewExisting.this,supplyactivity.class);
+//                stval1.set_user("extusr");
+//                stval1.set_id(idnum);
+//                in2.putExtra("uservalext",stval1);
+//
+//
+//                startActivity(in2);
 
             }
         });
