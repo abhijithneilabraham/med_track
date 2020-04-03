@@ -136,7 +136,7 @@ public class BlankFragment1 extends Fragment {
 
 
 
-        if(curruser=="extusr") {
+        if(curruser.equals("extusr")){
             dbref.child(idval).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -166,7 +166,7 @@ public class BlankFragment1 extends Fragment {
                 }
             });
         }
-        else if(curruser=="newusr"){
+        else if(curruser.equals("newusr")){
             name1.setText(n1);
             gender1.setText(g1);
             hosp1.setText(h1);

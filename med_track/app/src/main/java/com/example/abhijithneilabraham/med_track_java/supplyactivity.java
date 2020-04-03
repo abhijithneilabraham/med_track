@@ -48,7 +48,7 @@ public class supplyactivity extends AppCompatActivity {
         c=stv.getuser();
         i=stv.getidstore();
 
-        
+        test.setText(c);
 
 //        Bundle data=new Bundle();
 //        data.putString("id",idn);
