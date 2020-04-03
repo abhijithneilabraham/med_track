@@ -19,7 +19,7 @@ public class stockView extends AppCompatActivity {
     TextView namest,addressst,commst,remtime;
     String name,address,comm,remdays;
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    String flag;
+    String flag,remval;
 
 
     @Override
@@ -63,27 +63,69 @@ public class stockView extends AppCompatActivity {
                     String k=snp.getKey();
                     String v=snp.getValue().toString();
 
-                    DatabaseReference m=dbref.child(k).child("Commodity Names").child("Flag");
-                    addressst.setText(k);
+                    DatabaseReference m=dbref.child(k).child("Commodity Names");
                     m.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
-                            long f=dataSnapshot2.getValue(long.class);
-                             flag=""+f;
+                            for (DataSnapshot snp2 : dataSnapshot2.getChildren()) {
+                                String k2 = snp2.getKey();
+                                DatabaseReference m2=dbref.child(k).child("Commodity Names").child(k2).child("Flag");
+                                m2.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
+                                        long f=dataSnapshot3.getValue(long.class);
+                              flag=""+f;
                             if(flag.equals("1")){
 
                                 String nameval=dataSnapshot.child(k).child("Name").getValue(String.class);
+                                String addressval=dataSnapshot.child(k).child("Address").getValue(String.class);
+                                long r=dataSnapshot.child(k).child("Commodity Names").child(k2).child("Remaining Days").getValue(long.class);
+                                remval=""+r;
+
 
                                 namest.setText(nameval);
+                                addressst.setText(addressval);
+                                commst.setText(k2);
+                                remtime.setText(remval);
+
                             }
+                                    }
 
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                            }
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
                     });
+
+
+//                    addressst.setText(k);
+//                    m.addValueEventListener(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
+//                            long f=dataSnapshot3.getValue(long.class);
+//                             flag=""+f;
+//                            if(flag.equals("1")){
+//
+//                                String nameval=dataSnapshot.child(k).child("Name").getValue(String.class);
+//
+//                                namest.setText(nameval);
+//                            }
+//
+//                        }
+
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
 
 
 
