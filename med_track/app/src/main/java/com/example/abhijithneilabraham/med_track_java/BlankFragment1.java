@@ -123,13 +123,19 @@ public class BlankFragment1 extends Fragment {
         supplyactivity usr=(supplyactivity)getActivity();
         Bundle idbun=usr.getid();
         String idval=idbun.getString("id1");
+        String n1= idbun.getString("namestore");
+        String h1=idbun.getString("hospitalstore");
+        String curruser=idbun.getString("currentuser");
+        String d1=idbun.getString("dobstore");
+        String a1=idbun.getString("addressstore");
+        String g1=idbun.getString("genderstore");
+
+
 
         String[] heads= {"Name","Gender","Hospital Details","Address","Date Of Birth"};
-        Bundle bundle = this.getArguments();
 
-            stvalfr1= bundle.getParcelable("Student");
 
-        String curruser=stvalfr1.getuser();
+
         if(curruser=="extusr") {
             dbref.child(idval).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -161,11 +167,11 @@ public class BlankFragment1 extends Fragment {
             });
         }
         else if(curruser=="newusr"){
-            name1.setText(stvalfr1.getname());
-            gender1.setText(stvalfr1.getgender());
-            hosp1.setText(stvalfr1.gethosp());
-            address1.setText(stvalfr1.getaddress());
-            dob1.setText(stvalfr1.getdob());
+            name1.setText(n1);
+            gender1.setText(g1);
+            hosp1.setText(h1);
+            address1.setText(a1);
+            dob1.setText(d1);
         }
 //        for(int i=0;i<5;i++){
 //          readuser(heads[i],idval);

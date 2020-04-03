@@ -182,20 +182,33 @@ public class UserActivity extends AppCompatActivity  {
                 namedet=name.getText().toString();
                 hospdet=hosp.getText().toString();
                 adddet=address.getText().toString();
-                idnum=inu.getExtras().getString("idn");
+               // idnum=inu.getExtras().getString("idn");
                 String[] details= {namedet,adddet,hospdet,genderdet,dobdet};
-                storevals stval=new storevals();
-                stval.set_name(namedet);
-                stval.set_address(adddet);
-                stval.set_dob(dobdet);
-                stval.set_gender(genderdet);
-                stval.set_hosp(hospdet);
+                storevals stval=inu.getParcelableExtra("userval");
+              //  String cuser=inu.getExtras().getString("userval");
+                String cuser=stval.getuser();
+                idnum=stval.getidstore();
+                storevals stval2=new storevals();
+                stval2.set_name(namedet);
+                stval2.set_address(adddet);
+                stval2.set_dob(dobdet);
+                stval2.set_gender(genderdet);
+                stval2.set_hosp(hospdet);
+                stval2.set_user(cuser);
+                stval2.set_id(idnum);
+                name.setText(idnum);
+
+
+//                Intent intentu=new Intent(UserActivity.this,supplyactivity.class);
+//                intentu.putExtra("storevalu",stval);
+//
+//                startActivityForResult(intentu,2);
                     for(int i=0;i<details.length;i++) {
                         writeNewUser(idnum, headers[i], details[i]);
 
                     }
                     Intent i2=new Intent(UserActivity.this,supplyactivity.class);
-                    i2.putExtra("ide",idnum);
+                    i2.putExtra("storevalu",stval);
                     startActivity(i2);
             }
         });

@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 public class storevals implements Parcelable
 {
-    private String namestore,genderstore,addressstore,hospitalstore,dobstore,currentuser;
+    private String namestore,genderstore,addressstore,hospitalstore,dobstore,currentuser,id;
     private ParcelUuid[] val_uuids;
 
     public String getuser() {
@@ -15,6 +15,12 @@ public class storevals implements Parcelable
 
     public void set_user(String user) {
         this.currentuser = user;
+    }
+    public String getidstore() {
+        return id;
+    }
+    public void set_id (String idval) {
+        this.id = idval;
     }
 
     public String getname() {
@@ -100,6 +106,7 @@ public class storevals implements Parcelable
         dobstore=in.readString();
         genderstore=in.readString();
         currentuser=in.readString();
+        id=in.readString();
     }
 
     public void readFromParcel(Parcel in)
@@ -110,6 +117,7 @@ public class storevals implements Parcelable
         dobstore=in.readString();
         genderstore=in.readString();
         currentuser=in.readString();
+        id=in.readString();
     }
 
     public static final Parcelable.Creator<storevals> CREATOR = new Parcelable.Creator<storevals>()
@@ -139,6 +147,7 @@ public class storevals implements Parcelable
         out.writeString(genderstore);
         out.writeString(dobstore);
         out.writeString(currentuser);
+        out.writeString(id);
 
     }
 

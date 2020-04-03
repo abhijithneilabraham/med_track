@@ -16,22 +16,26 @@ Button newusr,exusr;
         newusr=(Button)findViewById(R.id.newusr);
         exusr=(Button)findViewById(R.id.exusr);
         Intent inn=getIntent();
-        String idnum=inn.getExtras().getString("idnumber");
+         storevals idnumstore=inn.getParcelableExtra("idnumber");
+         String idnum=idnumstore.getidstore();
+        //newusr.setText(idnum);
         storevals stval1=new storevals();
         newusr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stval1.set_user("newusr");
+  //              String set_usr="newusr";
 //                BlankFragment1 blfr1=new BlankFragment1();
 //                Bundle bundle = new Bundle();
 //                bundle.putParcelable("storevals",stval1);
 
-                Intent infr=new Intent(NewExisting.this,supplyactivity.class);
-                infr.putExtra("storevals",stval1);
-                startActivityForResult(infr,1);
-
+//                Intent infr=new Intent(NewExisting.this,UserActivity.class);
+//
+//                startActivityForResult(infr,1);
+            stval1.set_user("newusr");
+            stval1.set_id(idnum);
             Intent in=new Intent(NewExisting.this,UserActivity.class);
-            in.putExtra("idn",idnum);
+     //       in.putExtra("idn",idnum);
+            in.putExtra("userval",stval1);
            startActivity(in);
 
             }
@@ -39,12 +43,13 @@ Button newusr,exusr;
         exusr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stval1.set_user("extusr");
-                Intent infr2=new Intent(NewExisting.this,BlankFragment1.class);
-                infr2.putExtra("storevals",stval1);
-                startActivityForResult(infr2,1);
+                String set_usr="extusr";
+//                Intent infr2=new Intent(NewExisting.this,UserActivity.class);
+//                infr2.putExtra("userval",set_usr);
+               // startActivityForResult(infr2,1);
                 Intent in2=new Intent(NewExisting.this,supplyactivity.class);
                 in2.putExtra("ide",idnum);
+                in2.putExtra("userval",set_usr);
 
 
                 startActivity(in2);

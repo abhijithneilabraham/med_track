@@ -23,7 +23,8 @@ public class supplyactivity extends AppCompatActivity {
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     private String idn;
-    TextView test;
+    String n,a,h,d,g,c,i;
+  //  TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +37,18 @@ public class supplyactivity extends AppCompatActivity {
         dl.addDrawerListener(t);
         t.syncState();
         Intent in3=getIntent();
-        idn=in3.getExtras().getString("ide");
-        test=(TextView)findViewById(R.id.testpurpose);
-        storevals stv=in3.getParcelableExtra("storevals");
-        test.setText(stv.getuser());
+        //idn=in3.getExtras().getString("ide");
+        //test=(TextView)findViewById(R.id.testpurpose);
+        storevals stv=in3.getParcelableExtra("storevalu");
+        n=stv.getname();
+        a=stv.getaddress();
+        h=stv.gethosp();
+        d=stv.getdob();
+        g=stv.getgender();
+        c=stv.getuser();
+        i=stv.getidstore();
+
+       // test.setText(stv.getuser());
 
 //        Bundle data=new Bundle();
 //        data.putString("id",idn);
@@ -101,7 +110,13 @@ public class supplyactivity extends AppCompatActivity {
     }
     public Bundle getid(){
         Bundle hm = new Bundle();
-        hm.putString("id1",idn);
+        hm.putString("id1",i);
+        hm.putString("namestore",n);
+        hm.putString("addressstore",a);
+        hm.putString("hospitalstore",h);
+        hm.putString("dobstore",d);
+        hm.putString("genderstore",g);
+        hm.putString("currentuser",c);
         return hm;
     }
 //    public Bundle getstoreval(){

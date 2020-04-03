@@ -35,11 +35,11 @@ import org.json.JSONObject;
 public class idscanneractivity extends AppCompatActivity {
     private Button buttonScan,btnlogout2,pendingst,enterid,submit2;
     private TextView textViewName, textViewAddress;
-    private EditText idedit;
+     EditText idedit;
 
     //qr code scanner object
     private IntentIntegrator qrScan;
-    public  String idnum="";
+    protected   String idnum="";
     public void postData() {
         // Create a new HttpClient and Post Header
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -81,20 +81,27 @@ public class idscanneractivity extends AppCompatActivity {
         enterid=(Button)findViewById(R.id.enterid);
         idedit=(EditText)findViewById(R.id.idedittext);
 
+
         enterid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(idedit.getVisibility()==View.GONE){
 
-                    idedit.setVisibility(View.VISIBLE);
-                    idnum=idedit.getText().toString();
+
+                if(idedit.getVisibility()==v.GONE){
+
+
+                    idedit.setVisibility(v.VISIBLE);
+
+
+
+
 
                 }else{
-
-                    idedit.setVisibility(View.GONE);
+                    idedit.setVisibility(v.GONE);
                 }
             }
         });
+
 
         //intializing scan object
         qrScan = new IntentIntegrator(this);
@@ -115,12 +122,20 @@ public class idscanneractivity extends AppCompatActivity {
         }
     });
 
+
 submit2=findViewById(R.id.submit2);
 submit2.setOnClickListener(new View.OnClickListener() {
                                @Override
-                               public void onClick(View v) {
+                               public void onClick(View v2) {
+
+                                   storevals s=new storevals();
+                                   if(idnum.length()==0){
+                                       idnum=idedit.getText().toString();
+                                   }
+                                   s.set_id(idnum);
                                    Intent in=new Intent(idscanneractivity.this,NewExisting.class);
-                                   in.putExtra("idnumber",idnum);
+                                   in.putExtra("idnumber",s);
+
 
                                    startActivity(in);
                                }
