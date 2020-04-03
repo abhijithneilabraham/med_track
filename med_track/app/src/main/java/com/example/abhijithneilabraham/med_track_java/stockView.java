@@ -7,15 +7,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class stockView extends AppCompatActivity {
     TextView namest,addressst,commst,remtime;
     String name,address,comm,remdays;
+    public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +29,30 @@ public class stockView extends AppCompatActivity {
         addressst=(TextView)findViewById(R.id.addressst);
         commst=(TextView)findViewById(R.id.commst);
         remtime=(TextView)findViewById(R.id.remtime);
-        DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child("dgLWfQY9sZMumFUXqnE8tauIigp2");
+       DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
 
-        dbref.child("5555555").addValueEventListener(new ValueEventListener() {
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(uid);
+//
+//        Query query = reference.orderByChild("Flag").equalTo("1");
+//        query.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//
+//                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+//                        String k=dataSnapshot.getKey();
+//                        namest.setText("yes");
+//                        // do with your result
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+        dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snp : dataSnapshot.getChildren()) {
@@ -36,19 +61,38 @@ public class stockView extends AppCompatActivity {
                     //gives the value for given keyname
                     String k=snp.getKey();
                     String v=snp.getValue().toString();
-                    if(k.equals("Name")) {
-                        namest.setText(v);
-                    }
-                    else if(k.equals("Address")){
-                        addressst.setText(v);
-                    }
-                    else if(k.equals("Commodity Names")){
-                        commst.setText("pls wait this feature is only getting updated");
-                    }
+                    DatabaseReference m=dbref.child(k).child("Commodity Names").child("Flag");
+                    addressst.setText(k);
+                    m.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
+                            long f=dataSnapshot2.getValue(long.class);
+                            String flag=""+f;
+                            namest.setText(flag);
 
-                    else if(k.equals("Remaining Days")){
-                        remtime.setText(v);
-                    }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+//                    if(k.equals("aaa")) {
+//                        namest.setText("YES");
+//                    }
+//                    else if(k.equals("good")){
+//                        addressst.setText("YEs");
+//                    }
+//                    else if(k.equals("Commodity Names")){
+//                        commst.setText("pls wait this feature is only getting updated");
+//                    }
+//
+//                    else if(k.equals("Remaining Days")){
+//                        remtime.setText(v);
+//                    }
                 }
             }
             public void onCancelled(@NonNull DatabaseError databaseError) {

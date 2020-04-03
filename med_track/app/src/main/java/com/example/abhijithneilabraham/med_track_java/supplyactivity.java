@@ -123,12 +123,8 @@ public class supplyactivity extends AppCompatActivity {
         hm.putString("genderstore",g);
         hm.putString("currentuser",c);
         return hm;
+
     }
-//    public Bundle getstoreval(){
-//        Bundle st=new Bundle();
-//
-//
-//    }
 
 
     @Override
