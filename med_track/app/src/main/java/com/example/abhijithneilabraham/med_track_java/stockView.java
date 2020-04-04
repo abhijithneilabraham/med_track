@@ -2,9 +2,14 @@ package com.example.abhijithneilabraham.med_track_java;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Constraints;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,16 +25,20 @@ public class stockView extends AppCompatActivity {
     String name,address,comm,remdays;
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     String flag,remval;
-
+    androidx.constraintlayout.widget.ConstraintLayout conlay;
+    int[] colors = new int[2];
+    int i=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_view);
-        namest=(TextView)findViewById(R.id.namest);
-        addressst=(TextView)findViewById(R.id.addressst);
-        commst=(TextView)findViewById(R.id.commst);
-        remtime=(TextView)findViewById(R.id.remtime);
+        conlay=( androidx.constraintlayout.widget.ConstraintLayout)findViewById(R.id.conlay);
+        LayoutInflater inflater=getLayoutInflater();
+        View item=inflater.inflate(R.layout.item,conlay,false);
+
+       // setContentView(R.layout.activity_stock_view);
+
        DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
 
 //        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(uid);
@@ -56,6 +65,7 @@ public class stockView extends AppCompatActivity {
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 for (DataSnapshot snp : dataSnapshot.getChildren()) {
                     Log.v("",""+ snp.getKey()); //displays the key for the node
                     Log.v("",""+ snp.getValue());
@@ -82,7 +92,10 @@ public class stockView extends AppCompatActivity {
                                 long r=dataSnapshot.child(k).child("Commodity Names").child(k2).child("Remaining Days").getValue(long.class);
                                 remval=""+r;
 
-
+                                namest=(TextView)findViewById(R.id.namest);
+                                addressst=(TextView)findViewById(R.id.addressst);
+                                commst=(TextView)findViewById(R.id.commst);
+                                remtime=(TextView)findViewById(R.id.remtime);
                                 namest.setText(nameval);
                                 addressst.setText(addressval);
                                 commst.setText(k2);
@@ -142,12 +155,25 @@ public class stockView extends AppCompatActivity {
 //                    else if(k.equals("Remaining Days")){
 //                        remtime.setText(v);
 //                    }
+                    colors[0] = Color.parseColor("#559966CC");
+                    colors[1] = Color.parseColor("#55336699");
+                    i=i+1;
+
+                    item.getLayoutParams().width = Constraints.LayoutParams.MATCH_PARENT;
+                    item.setBackgroundColor(colors[i%2]);
+                    if(item.getParent() !=null){
+                        ((ViewGroup)item.getParent()).removeView(item);
+                    }
+                    conlay.addView(item);
                 }
             }
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
+
+
 
     }
 }
