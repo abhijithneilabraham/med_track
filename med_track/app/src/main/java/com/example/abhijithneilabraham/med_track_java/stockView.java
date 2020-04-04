@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,57 +23,51 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class stockView extends AppCompatActivity {
     //TextView namest,addressst,commst,remtime;
     String name,address,comm,remdays;
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     String flag,remval;
     androidx.constraintlayout.widget.ConstraintLayout conlay;
+    private ListView dataListView;
     int[] colors = new int[2];
-    int i=0;
+    ArrayList<String> listItems = new ArrayList<String>();
+    ArrayList<String> listKeys = new ArrayList<String>();
+    ArrayAdapter<String> adapter;
+    String nameval,addressval;
+    ArrayList<String> details = new ArrayList<String>();
+    int b=0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_view);
-        conlay=( androidx.constraintlayout.widget.ConstraintLayout)findViewById(R.id.conlay);
-        LayoutInflater inflater=getLayoutInflater();
+        dataListView = (ListView) findViewById(R.id.listview);
 
 
-       // setContentView(R.layout.activity_stock_view);
+
+
+
+
 
        DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
 
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(uid);
-//
-//        Query query = reference.orderByChild("Flag").equalTo("1");
-//        query.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.exists()) {
-//
-//                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
-//                        String k=dataSnapshot.getKey();
-//                        namest.setText("yes");
-//                        // do with your result
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, details);
+        dataListView.setAdapter(itemsAdapter);
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
                 for (DataSnapshot snp : dataSnapshot.getChildren()) {
-                    View item=inflater.inflate(R.layout.item,conlay,false);
-                    Log.v("",""+ snp.getKey()); //displays the key for the node
-                    Log.v("",""+ snp.getValue());
+
+
                     //gives the value for given keyname
                     String k=snp.getKey();
                     String v=snp.getValue().toString();
@@ -89,24 +86,33 @@ public class stockView extends AppCompatActivity {
                               flag=""+f;
                             if(flag.equals("1")){
 
-                                String nameval=dataSnapshot.child(k).child("Name").getValue(String.class);
-                                String addressval=dataSnapshot.child(k).child("Address").getValue(String.class);
+                                 nameval=dataSnapshot.child(k).child("Name").getValue(String.class);
+                                 addressval=dataSnapshot.child(k).child("Address").getValue(String.class);
                                 long r=dataSnapshot.child(k).child("Commodity Names").child(k2).child("Remaining Days").getValue(long.class);
                                 remval=""+r;
 
 
-                                TextView   namest=(TextView) findViewById(R.id.namest);
-                                TextView addressst=(TextView)findViewById(R.id.addressst);
-                                TextView commst=(TextView)findViewById(R.id.commst);
-                                TextView remtime=(TextView)findViewById(R.id.remtime);
-                                namest.setText(nameval);
-                                addressst.setText(addressval);
-                                commst.setText(k2);
-                                remtime.setText(remval);
-                                colors[0] = Color.parseColor("#559966CC");
-                                colors[1] = Color.parseColor("#55336699");
-                                i=i+1;
+                                 details.add("Name:"+nameval);
+                                 details.add("Address:"+addressval);
+                                 details.add("Commodity Name:"+k2);
+                                 details.add("Remaining Days:"+remval);
 
+                                dataListView.setAdapter(itemsAdapter);
+
+
+
+
+
+
+//                                TextView   namest=(TextView) findViewById(R.id.namest);
+//                                TextView addressst=(TextView)findViewById(R.id.addressst);
+//                                TextView commst=(TextView)findViewById(R.id.commst);
+//                                TextView remtime=(TextView)findViewById(R.id.remtime);
+//
+//                                namest.setText(nameval);
+//                                addressst.setText(addressval);
+//                                commst.setText(k2);
+//                                remtime.setText(remval);
 
 
                             }
@@ -127,58 +133,12 @@ public class stockView extends AppCompatActivity {
                         }
                     });
 
-
-//                    addressst.setText(k);
-//                    m.addValueEventListener(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
-//                            long f=dataSnapshot3.getValue(long.class);
-//                             flag=""+f;
-//                            if(flag.equals("1")){
-//
-//                                String nameval=dataSnapshot.child(k).child("Name").getValue(String.class);
-//
-//                                namest.setText(nameval);
-//                            }
-//
-//                        }
-
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                        }
-//                    });
-
-
-
-//                    if(k.equals("aaa")) {
-//                        namest.setText("YES");
-//                    }
-//                    else if(k.equals("good")){
-//                        addressst.setText("YEs");
-//                    }
-//                    else if(k.equals("Commodity Names")){
-//                        commst.setText("pls wait this feature is only getting updated");
-//                    }
-//
-//                    else if(k.equals("Remaining Days")){
-//                        remtime.setText(v);
-//                    }
-                    item.getLayoutParams().width = Constraints.LayoutParams.MATCH_PARENT;
-                    item.setBackgroundColor(colors[i%2]);
-                    if(item.getParent() !=null){
-                        ((ViewGroup)item.getParent()).removeView(item);
-                    }
-                    conlay.addView(item);
-
                 }
             }
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
-
 
 
     }

@@ -12,6 +12,12 @@
     android:layout_height="wrap_content"
     android:id="@+id/conlay">
 
+<ListView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/listview"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
