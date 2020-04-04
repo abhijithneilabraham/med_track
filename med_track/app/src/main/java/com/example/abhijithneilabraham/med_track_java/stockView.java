@@ -39,7 +39,8 @@ public class stockView extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     String nameval,addressval;
     ArrayList<String> details = new ArrayList<String>();
-    int b=0;
+
+    int fl=0;
 
 
 
@@ -58,7 +59,27 @@ public class stockView extends AppCompatActivity {
        DatabaseReference dbref= FirebaseDatabase.getInstance().getReference().child(uid);
 
         ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, details);
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, details){
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent){
+
+                        // Get the current item from ListView
+                        View view = super.getView(position,convertView,parent);
+                        if(position%8>=4)
+                        {
+                            // Set a background color for ListView regular row/item
+                            view.setBackgroundColor(Color.parseColor("#FFB6B546"));
+
+                        }
+                        else
+                        {
+                            // Set the background color for alternate row/item
+                            view.setBackgroundColor(Color.parseColor("#00FFFF"));
+
+                        }
+                        return view;
+                    }
+                };
         dataListView.setAdapter(itemsAdapter);
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,6 +117,7 @@ public class stockView extends AppCompatActivity {
                                  details.add("Address:"+addressval);
                                  details.add("Commodity Name:"+k2);
                                  details.add("Remaining Days:"+remval);
+
 
                                 dataListView.setAdapter(itemsAdapter);
 
