@@ -21,7 +21,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class stockView extends AppCompatActivity {
-    TextView namest,addressst,commst,remtime;
+    //TextView namest,addressst,commst,remtime;
     String name,address,comm,remdays;
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     String flag,remval;
@@ -35,7 +35,7 @@ public class stockView extends AppCompatActivity {
         setContentView(R.layout.activity_stock_view);
         conlay=( androidx.constraintlayout.widget.ConstraintLayout)findViewById(R.id.conlay);
         LayoutInflater inflater=getLayoutInflater();
-        View item=inflater.inflate(R.layout.item,conlay,false);
+
 
        // setContentView(R.layout.activity_stock_view);
 
@@ -66,7 +66,9 @@ public class stockView extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+
                 for (DataSnapshot snp : dataSnapshot.getChildren()) {
+                    View item=inflater.inflate(R.layout.item,conlay,false);
                     Log.v("",""+ snp.getKey()); //displays the key for the node
                     Log.v("",""+ snp.getValue());
                     //gives the value for given keyname
@@ -92,16 +94,23 @@ public class stockView extends AppCompatActivity {
                                 long r=dataSnapshot.child(k).child("Commodity Names").child(k2).child("Remaining Days").getValue(long.class);
                                 remval=""+r;
 
-                                namest=(TextView)findViewById(R.id.namest);
-                                addressst=(TextView)findViewById(R.id.addressst);
-                                commst=(TextView)findViewById(R.id.commst);
-                                remtime=(TextView)findViewById(R.id.remtime);
+
+                                TextView   namest=(TextView) findViewById(R.id.namest);
+                                TextView addressst=(TextView)findViewById(R.id.addressst);
+                                TextView commst=(TextView)findViewById(R.id.commst);
+                                TextView remtime=(TextView)findViewById(R.id.remtime);
                                 namest.setText(nameval);
                                 addressst.setText(addressval);
                                 commst.setText(k2);
                                 remtime.setText(remval);
+                                colors[0] = Color.parseColor("#559966CC");
+                                colors[1] = Color.parseColor("#55336699");
+                                i=i+1;
+
+
 
                             }
+
                                     }
 
                                     @Override
@@ -155,16 +164,13 @@ public class stockView extends AppCompatActivity {
 //                    else if(k.equals("Remaining Days")){
 //                        remtime.setText(v);
 //                    }
-                    colors[0] = Color.parseColor("#559966CC");
-                    colors[1] = Color.parseColor("#55336699");
-                    i=i+1;
-
                     item.getLayoutParams().width = Constraints.LayoutParams.MATCH_PARENT;
                     item.setBackgroundColor(colors[i%2]);
                     if(item.getParent() !=null){
                         ((ViewGroup)item.getParent()).removeView(item);
                     }
                     conlay.addView(item);
+
                 }
             }
             public void onCancelled(@NonNull DatabaseError databaseError) {
