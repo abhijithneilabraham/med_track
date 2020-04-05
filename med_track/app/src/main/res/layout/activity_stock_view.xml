@@ -12,7 +12,20 @@
     android:layout_height="wrap_content"
     android:id="@+id/conlay">
 
-<ListView
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="176dp"
+        android:layout_marginBottom="364dp"
+        android:indeterminateDrawable="@drawable/rot"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/listview"

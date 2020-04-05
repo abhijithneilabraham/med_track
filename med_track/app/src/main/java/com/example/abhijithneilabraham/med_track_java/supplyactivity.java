@@ -26,6 +26,7 @@ public class supplyactivity extends AppCompatActivity {
     String n,a,h,d,g,c,i;
     //TextView test;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +43,7 @@ public class stockView extends AppCompatActivity {
     ArrayList<String> details = new ArrayList<String>();
 
     int fl=0;
+    private ProgressBar spinner;
 
 
 
@@ -49,8 +52,8 @@ public class stockView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_view);
         dataListView = (ListView) findViewById(R.id.listview);
-
-
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        Toast.makeText(this, "Please wait,data loading..", Toast.LENGTH_SHORT).show();
 
 
 
@@ -85,8 +88,9 @@ public class stockView extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-
+                spinner.setVisibility(View.GONE);
                 for (DataSnapshot snp : dataSnapshot.getChildren()) {
+
 
 
                     //gives the value for given keyname

@@ -8,6 +8,7 @@ Created on Wed Mar 25 02:38:23 2020
 def dbupdate():
     from algo import Tracker
     import pyrebase
+  
     
   
     firebase = pyrebase.initialize_app(config)
@@ -25,6 +26,7 @@ def dbupdate():
             #print(commname)
             for k in commname:
                 dat=commname[k]
+                print(dat,"sadasdasd")
                 starttime,stock=dat["Date"],dat["Stock"]
                 print(starttime,stock)
                 duration,days=list(dat["Period"].keys())[0],list(dat["Period"].values())[0]
