@@ -180,6 +180,9 @@ public class UserActivity extends AppCompatActivity  {
             public void onClick(View v) {
 
                // idnum=inu.getExtras().getString("idn");
+                namedet=name.getText().toString();
+                hospdet=hosp.getText().toString();
+                adddet=address.getText().toString();
                 String[] details= {namedet,adddet,hospdet,genderdet,dobdet};
 
               //  String cuser=inu.getExtras().getString("userval");
@@ -194,9 +197,7 @@ public class UserActivity extends AppCompatActivity  {
                 storevals stval2=new storevals();
                 stval2.set_id(idnum);
                 stval2.set_user(cuser);
-                namedet=name.getText().toString();
-                hospdet=hosp.getText().toString();
-                adddet=address.getText().toString();
+
                 stval2.set_name(namedet);
                 stval2.set_address(adddet);
                 stval2.set_dob(dobdet);
