@@ -23,22 +23,21 @@
         android:id="@+id/enterid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginBottom="548dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="636dp"
         android:text="Enter Patient ID"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/idedittext"
-        android:layout_width="153dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="132dp"
-        android:layout_marginBottom="476dp"
-        android:visibility="gone"
+        android:layout_width="162dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginBottom="496dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnLogOut2"
@@ -64,8 +63,8 @@
         android:id="@+id/submit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginBottom="148dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginBottom="144dp"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

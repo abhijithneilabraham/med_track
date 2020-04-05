@@ -115,11 +115,15 @@ public class UserActivity extends AppCompatActivity  {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                              dobdet=dayOfMonth+"/"+month+"/"+year;
+                            if(dobdet.length()>0){
+                                dobclick.setText(dobdet);
+                            }
                         }
                     },y,m,d);
                 datePickerDialog.show();
             }
         });
+
        // String dob=dpResult.getDayOfMonth()+"/"+dpResult.getMonth()+"/"+dpResult.getYear();
 
 
@@ -130,20 +134,6 @@ public class UserActivity extends AppCompatActivity  {
 
 
         Intent inu=getIntent();
-
-
-     //   getSupportFragmentManager().beginTransaction().add( BlankFragment1.newInstance("id",idnum),"BlankFragment1").commit();
-
-//        Bundle data=new Bundle();
-//        data.putString("id",idnum);
-//        BlankFragment1 bl1= new BlankFragment1();
-//        bl1.setArguments(data);
-//        FragmentManager fm=getSupportFragmentManager();
-//        fm.beginTransaction().replace(R.id.blankone,bl1).commit();
-       // bl1.newInstance(idnum,"id");
-        //getSupportFragmentManager().beginTransaction().add(R.id.blankone, bl1).commit();
-
-
 
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
