@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.abhijithneilabraham.med_track_java.ui.dashboard.DashboardFragment;
 import com.example.abhijithneilabraham.med_track_java.ui.home.HomeFragment;
+import com.example.abhijithneilabraham.med_track_java.ui.notifications.NotificationsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -41,16 +43,16 @@ public class idscannertabbed extends AppCompatActivity {
         BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        Fragment fr = null;
                         switch (item.getItemId()) {
                             case R.id.navigation_home:
-                                Toast.makeText(idscannertabbed.this, "Details of the Customer",Toast.LENGTH_SHORT).show();
-                                Fragment fr=new HomeFragment();
+                                 fr=new HomeFragment();
                                 return true;
                             case R.id.navigation_dashboard:
-                                Toast.makeText(idscannertabbed.this, "waah", Toast.LENGTH_SHORT).show();
+                                fr=new DashboardFragment();
                                 return true;
                             case R.id.navigation_notifications:
-                                Toast.makeText(idscannertabbed.this, "Help Page", Toast.LENGTH_SHORT).show();
+                                fr=new NotificationsFragment();
                                 return true;
                         }
                         return false;
