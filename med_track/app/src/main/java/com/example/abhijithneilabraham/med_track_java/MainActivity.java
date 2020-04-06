@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent I = new Intent(MainActivity.this, ActivityLogin.class);
+                Intent I = new Intent(MainActivity.this, idscannertabbed.class);
                 startActivity(I);
 
             }

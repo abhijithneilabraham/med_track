@@ -53,9 +53,7 @@ public class stockView extends AppCompatActivity {
         setContentView(R.layout.activity_stock_view);
         dataListView = (ListView) findViewById(R.id.listview);
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
-        Toast.makeText(this, "Please wait,data loading..", Toast.LENGTH_SHORT).show();
-
-
+        Toast.makeText(this, "Please wait,data loading..", Toast.LENGTH_LONG).show();
 
 
 
@@ -83,7 +81,7 @@ public class stockView extends AppCompatActivity {
                         return view;
                     }
                 };
-        dataListView.setAdapter(itemsAdapter);
+
         dbref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
