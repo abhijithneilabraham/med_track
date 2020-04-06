@@ -14,6 +14,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -43,6 +44,7 @@ public class idscannertabbed extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.navigation_home:
                                 Toast.makeText(idscannertabbed.this, "Details of the Customer",Toast.LENGTH_SHORT).show();
+                                Fragment fr=new HomeFragment();
                                 return true;
                             case R.id.navigation_dashboard:
                                 Toast.makeText(idscannertabbed.this, "waah", Toast.LENGTH_SHORT).show();
