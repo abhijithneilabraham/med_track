@@ -90,22 +90,22 @@ public class HomeFragment extends Fragment {
                                                idnum=idedit.getText().toString();
 
                                            }
-                                           submit2.setText(idnum);
-//                                           s.set_id(idnum);
-//                                           Intent in=new Intent(idscanneractivity.this, NewExisting.class);
-//                                           in.putExtra("idnumber",s);
-//
-//
-//                                           startActivity(in);
+
+                                           s.set_id(idnum);
+                                           Intent in=new Intent(getContext(), NewExisting.class);
+                                           in.putExtra("idnumber",s);
+
+
+                                           startActivity(in);
                                        }
                                    }
         );
         btnlogout2.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
-//                                              FirebaseAuth.getInstance().signOut();
-//                                              Intent I = new Intent(idscanneractivity.this, ActivityLogin.class);
-//                                              startActivity(I);
+                                              FirebaseAuth.getInstance().signOut();
+                                              Intent I = new Intent(getContext(), ActivityLogin.class);
+                                              startActivity(I);
                                           }
                                       }
         );
