@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/polygon">
 
     <EditText
         android:id="@+id/loginEmail"
@@ -39,6 +40,10 @@
         android:layout_margin="15dp"
         android:text="New User? Register Here"
         android:textSize="20dp"
+        android:background="@color/button"
+        android:backgroundTint="@color/black"
+        android:backgroundTintMode="add"
+        android:textAlignment="center"
         />
 
 </LinearLayout>
