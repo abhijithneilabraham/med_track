@@ -7,17 +7,17 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".UserActivity">
+    tools:context=".UserActivity"
+    android:background="@drawable/polygon">
 
     <Button
         android:id="@+id/btnLogOut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="358dp"
+        android:layout_height="52dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:text="Logout"
+        android:background="@drawable/grad4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -27,6 +27,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="76dp"
         android:text="Name"
+        android:textColor="@color/black"
         android:id="@+id/namehead"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,6 +39,7 @@
         android:layout_marginTop="276dp"
         android:text="Address"
         android:id="@+id/addresshead"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +50,7 @@
         android:layout_marginTop="376dp"
         android:text="Hospital Details"
         android:id="@+id/hosphead"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,6 +61,7 @@
         android:layout_marginTop="164dp"
         android:text="Gender"
         android:id="@+id/genderhead"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,6 +72,7 @@
         android:layout_marginTop="484dp"
         android:text="Date Of Birth"
         android:id="@+id/dobhead"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -123,19 +128,21 @@
         android:layout_marginStart="216dp"
         android:layout_marginTop="468dp"
         android:text="choose date"
+        android:background="@drawable/grad3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="592dp"
+        android:layout_width="358dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="600dp"
         android:text="submit"
+
+        android:background="@drawable/grad4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
