@@ -9,6 +9,7 @@
 
     <Button
         android:id="@+id/enteridfr"
+        android:background="@drawable/grad"
         android:layout_width="161dp"
         android:layout_height="74dp"
         android:layout_marginStart="124dp"
@@ -32,6 +33,7 @@
         android:layout_height="70dp"
         android:layout_marginBottom="184dp"
         android:text="Submit"
+        android:background="@drawable/grad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -41,6 +43,7 @@
         android:layout_height="74dp"
         android:layout_marginBottom="92dp"
         android:text="Logout"
+        android:background="@drawable/grad"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
