@@ -136,6 +136,7 @@ public class DashboardFragment extends Fragment {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
                             for (DataSnapshot snp2 : dataSnapshot2.getChildren()) {
                                 String k2 = snp2.getKey();
+                                if (dataSnapshot2.child(k2).hasChild("Flag")) {
 
                                     DatabaseReference m2 = dbref.child(k).child("Commodity Names").child(k2).child("Flag");
                                     m2.addValueEventListener(new ValueEventListener() {
@@ -182,7 +183,7 @@ public class DashboardFragment extends Fragment {
                                         }
                                     });
                                 }
-
+                            }
 
                         }
                         @Override
