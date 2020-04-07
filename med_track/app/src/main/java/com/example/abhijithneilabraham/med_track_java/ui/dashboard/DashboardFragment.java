@@ -17,6 +17,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.abhijithneilabraham.med_track_java.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +38,7 @@ public class DashboardFragment extends Fragment {
     public String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     String flag,remval;
 
+
     private ListView dataListView;
     int[] colors = new int[2];
     ArrayList<String> listItems = new ArrayList<String>();
@@ -44,7 +51,35 @@ public class DashboardFragment extends Fragment {
     private ProgressBar spinner;
 
     private DashboardViewModel dashboardViewModel;
+    public void postData() {
+        // Create a new HttpClient and Post Header
+        RequestQueue queue = Volley.newRequestQueue(getContext());
 
+
+        final   String url ="https://medtrack1234.pythonanywhere.com/";
+
+        //  final String url = url1.replaceAll("\\s+", "");
+
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+        });
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
@@ -53,6 +88,7 @@ public class DashboardFragment extends Fragment {
         dataListView = (ListView)root.findViewById(R.id.listviewfr);
         spinner = (ProgressBar)root.findViewById(R.id.progressBar1fr);
         Toast.makeText(getContext(), "Please wait,data loading..", Toast.LENGTH_LONG).show();
+        postData();
 
 
 
@@ -100,31 +136,28 @@ public class DashboardFragment extends Fragment {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
                             for (DataSnapshot snp2 : dataSnapshot2.getChildren()) {
                                 String k2 = snp2.getKey();
-                                DatabaseReference m2=dbref.child(k).child("Commodity Names").child(k2).child("Flag");
-                                m2.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
-                                        long f=dataSnapshot3.getValue(long.class);
-                                        flag=""+f;
-                                        if(flag.equals("1")){
 
-                                            nameval=dataSnapshot.child(k).child("Name").getValue(String.class);
-                                            addressval=dataSnapshot.child(k).child("Address").getValue(String.class);
-                                            long r=dataSnapshot.child(k).child("Commodity Names").child(k2).child("Remaining Days").getValue(long.class);
-                                            remval=""+r;
+                                    DatabaseReference m2 = dbref.child(k).child("Commodity Names").child(k2).child("Flag");
+                                    m2.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
+                                            long f = dataSnapshot3.getValue(long.class);
+                                            flag = "" + f;
+                                            if (flag.equals("1")) {
 
-
-                                            details.add("Name:"+nameval);
-                                            details.add("Address:"+addressval);
-                                            details.add("Commodity Name:"+k2);
-                                            details.add("Remaining Days:"+remval);
+                                                nameval = dataSnapshot.child(k).child("Name").getValue(String.class);
+                                                addressval = dataSnapshot.child(k).child("Address").getValue(String.class);
+                                                long r = dataSnapshot.child(k).child("Commodity Names").child(k2).child("Remaining Days").getValue(long.class);
+                                                remval = "" + r;
 
 
-                                            dataListView.setAdapter(itemsAdapter);
+                                                details.add("Name:" + nameval);
+                                                details.add("Address:" + addressval);
+                                                details.add("Commodity Name:" + k2);
+                                                details.add("Remaining Days:" + remval);
 
 
-
-
+                                                dataListView.setAdapter(itemsAdapter);
 
 
 //                                TextView   namest=(TextView) findViewById(R.id.namest);
@@ -138,17 +171,19 @@ public class DashboardFragment extends Fragment {
 //                                remtime.setText(remval);
 
 
+                                            }
+
+
                                         }
 
-                                    }
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        }
+                                    });
+                                }
 
-                                    }
-                                });
 
-                            }
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
