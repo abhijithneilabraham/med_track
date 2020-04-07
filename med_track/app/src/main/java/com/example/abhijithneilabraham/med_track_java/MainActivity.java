@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                                         "SignUp unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(MainActivity.this, UserActivity.class));
+                                startActivity(new Intent(MainActivity.this, idscannertabbed.class));
                             }
                         }
                     });
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent I = new Intent(MainActivity.this, idscannertabbed.class);
+                Intent I = new Intent(MainActivity.this, ActivityLogin.class);
                 startActivity(I);
 
             }

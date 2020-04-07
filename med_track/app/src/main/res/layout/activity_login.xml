@@ -26,7 +26,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:text="Login In"
+        android:outlineSpotShadowColor="@color/button_back"
+        android:background="@color/link"
+        android:text="Login "
         android:textSize="25dp" />
 
 
