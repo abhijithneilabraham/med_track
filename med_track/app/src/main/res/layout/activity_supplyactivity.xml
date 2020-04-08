@@ -17,7 +17,8 @@
         <TextView
             android:layout_width="249dp"
             android:layout_height="136dp"
-            android:text="Click on the left pane"
+            android:text="Click on the left pane to update each category of items"
+
             android:id="@+id/testpurpose"/>
 
         <FrameLayout
