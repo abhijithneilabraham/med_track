@@ -16,14 +16,21 @@ An android device for the supplier to enter the details of the customer and the 
 
 Inputs:
 
--Supplier :
--Sign up
--Log in
--Enter customer ID    
--Via manual text entry
--Via Scanning Qr code on the customer ID tag ,or stickered with the medicine
--If new user, enter user details, else ,add the new stock details.When the stock is being updated, the parameter dosage per duration can be the dosage per,day,week, or month of consumption.The calculation will be done according to the entered dosage per the duration.
--After entering the stock details,the pending stocks can be viewed using the pending stocks option,which regularly updates the remaining dates for stocks which need renewal in under 30 days.
+ Supplier side-
+
+* Sign up
+
+* Log in
+
+* Enter customer ID 
+
+* Via manual text entry
+
+* Via Scanning Qr code on the customer ID tag ,or stickered with the medicine
+
+* If new user, enter user details, else ,add the new stock details.When the stock is being updated, the parameter dosage per duration can be the dosage per,day,week, or month of consumption.The calculation will be done according to the entered dosage per the duration.
+
+* After entering the stock details,the pending stocks can be viewed using the pending stocks option,which regularly updates the remaining dates for stocks which need renewal in under 30 days.
 
 
 	
