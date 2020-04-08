@@ -40,4 +40,4 @@ Contributions welcomed.
 
 
 
-<img src="imgs/1.jpeg"/>
+<img src="imgs/1.jpeg" height="300" width="150"/> <img src="imgs/2.jpeg" height="300" width="150"/> <img src="imgs/3.jpeg" height="300" width="150"/> <img src="imgs/4.jpeg" height="300" width="150"/> <img src="imgs/5.jpeg" height="300" width="150"/> <img src="imgs/6.jpeg" height="300" width="150"/> <img src="imgs/7.jpeg" height="300" width="150"/> <img src="imgs/8.jpeg" height="300" width="150"/> <img src="imgs/9.jpeg" height="300" width="150"/> <img src="imgs/10.jpeg" height="300" width="150"/>
